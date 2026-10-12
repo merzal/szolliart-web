@@ -948,6 +948,127 @@ button { font: inherit; color: inherit; }
 .viewer__inquire:hover { background: rgba(127, 209, 174, .14); }
 .viewer__inquire[hidden] { display: none; }
 
+/* ------------------------------------------------------------------ */
+/* Inquiry dialog                                                     */
+/* ------------------------------------------------------------------ */
+@keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+.inquiry-lock { overflow: hidden; }
+.inquiry {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 4vw, 40px);
+}
+.inquiry[hidden] { display: none; }
+.inquiry__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 5, 8, .7);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+.inquiry__panel {
+  position: relative;
+  /* Design: 520px content-box + side padding; border-box here so it never overflows a phone. */
+  width: calc(520px + 2 * clamp(20px, 5vw, 36px));
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: clamp(24px, 5vw, 34px) clamp(20px, 5vw, 36px) clamp(24px, 5vw, 32px);
+  border-radius: var(--r-xl);
+  background: var(--c-surface);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
+  animation: riseIn .3s cubic-bezier(.32, .72, 0, 1) both;
+}
+.inquiry__form { display: flex; flex-direction: column; gap: 22px; }
+.inquiry__form[hidden], .inquiry__sent[hidden] { display: none; }
+.inquiry__title {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.028em;
+  text-wrap: pretty;
+}
+.inquiry__line { margin: 5px 0 0; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--c-text-2); }
+.inquiry__rule { height: 1px; margin: 0; border: 0; background: var(--line-strong); }
+.inquiry__field { display: flex; flex-direction: column; gap: 7px; }
+.inquiry__field label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--c-accent); }
+.inquiry__field input, .inquiry__field textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line-control);
+  border-radius: 11px;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-text);
+  font-size: 14px;
+  outline: none;
+}
+.inquiry__field textarea { line-height: 1.6; resize: none; }
+.inquiry__field input::placeholder { color: var(--c-text-3); }
+.inquiry__field input:focus-visible, .inquiry__field textarea:focus-visible { border-color: var(--accent-line); box-shadow: 0 0 0 2px rgba(127, 209, 174, .25); }
+.inquiry__field [aria-invalid="true"] { border-color: #E59A9A; }
+.inquiry__error { margin: 0; font-size: 12px; color: #F0A8A8; }
+.inquiry__error[hidden] { display: none; }
+.inquiry__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.inquiry__send {
+  padding: 15px;
+  border-radius: 13px;
+  border: 1px solid var(--accent-line-2);
+  background: none;
+  color: var(--c-accent);
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+.inquiry__send:hover { background: var(--accent-wash); }
+/* Design: looks inactive (opacity .45) until name and e-mail are valid; it still explains what is missing when pressed. */
+.inquiry__send.is-idle { opacity: .45; }
+.inquiry__send:disabled { cursor: progress; }
+.inquiry__status { margin: -8px 0 0; font-size: 13px; line-height: 1.5; color: #F0A8A8; text-align: center; }
+.inquiry__status[hidden] { display: none; }
+.inquiry__note { margin: 0; font-size: 11.5px; line-height: 1.5; text-align: center; color: var(--c-text-3); }
+
+.inquiry__sent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 6px 8px;
+  text-align: center;
+}
+.inquiry__check { color: var(--c-accent-strong); display: block; }
+.inquiry__check svg { display: block; }
+.inquiry__sent-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  outline: none;
+}
+.inquiry__sent-text { margin: 0; max-width: 320px; font-size: 14px; line-height: 1.6; color: var(--c-text-2); text-wrap: pretty; }
+.inquiry__done {
+  margin-top: 10px;
+  padding: 13px 26px;
+  border-radius: 13px;
+  border: 1px solid var(--line-control-2);
+  background: none;
+  color: var(--c-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+.inquiry__done:hover { border-color: rgba(241, 233, 228, .4); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: .01ms !important;

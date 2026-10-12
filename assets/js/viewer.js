@@ -307,7 +307,7 @@
   el.prev.addEventListener('click', function () { step(-1); });
   el.next.addEventListener('click', function () { step(1); });
   el.inquire.addEventListener('click', function () {
-    document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().slug } }));
+    document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().slug, from: el.inquire } }));
   });
   // Design: the whole info block toggles the details sheet.
   el.info.addEventListener('click', function () {
