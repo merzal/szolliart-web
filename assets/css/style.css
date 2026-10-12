@@ -759,14 +759,7 @@ button { font: inherit; color: inherit; }
 .viewer__zoom.is-panning { transition: none; }
 .viewer__img { width: 100%; height: 100%; object-fit: contain; }
 
-.viewer__shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(14, 11, 17, .72) 0, rgba(14, 11, 17, 0) 22%, rgba(14, 11, 17, 0) 46%, rgba(14, 11, 17, .9) 100%);
-}
 /* Zoom mode hides all chrome. */
-.viewer.is-zoom .viewer__shade,
 .viewer.is-zoom .viewer__top,
 .viewer.is-zoom .viewer__rail,
 .viewer.is-zoom .viewer__bottom { display: none; }
@@ -801,7 +794,9 @@ button { font: inherit; color: inherit; }
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 22px var(--gutter) 0;
+  padding: 22px var(--gutter) 18px;
+  /* Shade only as tall as the top bar, so it barely reaches the image. */
+  background: linear-gradient(to bottom, rgba(14, 11, 17, .6), rgba(14, 11, 17, 0));
 }
 .viewer__scope {
   margin: 0;
@@ -872,7 +867,9 @@ button { font: inherit; color: inherit; }
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0 var(--gutter) clamp(26px, 4vw, 38px);
+  padding: 28px var(--gutter) clamp(26px, 4vw, 38px);
+  /* Shade starts just above the caption instead of covering the image. */
+  background: linear-gradient(to top, rgba(14, 11, 17, .88) 0, rgba(14, 11, 17, .75) calc(100% - 28px), rgba(14, 11, 17, 0) 100%);
 }
 .viewer__info { max-width: 720px; cursor: pointer; }
 .viewer__toggle {

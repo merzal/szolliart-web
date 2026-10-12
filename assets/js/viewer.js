@@ -40,7 +40,6 @@
   root.setAttribute('aria-labelledby', 'viewer-title');
   root.innerHTML =
     '<div class="viewer__stage" data-stage><div class="viewer__zoom" data-zoom><img class="viewer__img" data-img alt=""></div></div>' +
-    '<div class="viewer__shade" aria-hidden="true"></div>' +
     '<div class="viewer__zoom-layer" data-layer hidden><p class="viewer__zoom-hint" data-zoom-hint aria-live="polite"></p></div>' +
     '<div class="viewer__top">' +
       '<p class="viewer__scope" data-scope></p>' +
