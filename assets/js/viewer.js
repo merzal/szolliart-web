@@ -86,6 +86,10 @@
   var viaHistory = false; // opened by a hash navigation, so Back (or close) pops it
   var pending = null;     // list context from a grid click, picked up by the hash route
   var opener = null, closeTimer = null;
+  // Page scroll at open. While the viewer is up (and while it closes), the page is held there:
+  // closing goes back in history, and returning to an entry such as #tartalom would otherwise
+  // scroll the page to that anchor behind the sliding sheet.
+  var pageY = 0, holdScroll = false;
   var activator = null;  // the #mu/ link that was clicked (Safari does not focus links on click)
   var z = { on: false, s: 1, x: 0, y: 0, max: 1, fitW: 0, fitH: 0, boxW: 0, boxH: 0 };
 
@@ -205,8 +209,8 @@
     idx = (i + list.length) % list.length;
     view = v || 0;
     z.s = 1; z.x = 0; z.y = 0;
+    if (z.on) measure();   // before render, so the zoom hint uses the new image's cap
     render();
-    if (z.on) measure();
     history.replaceState(history.state, '', '#mu/' + current().slug);
   }
   function step(d) { if (list.length) show(idx + d); }
@@ -227,6 +231,8 @@
     if (!isOpen) {
       opener = activator || document.activeElement;
       activator = null;
+      pageY = window.scrollY;
+      holdScroll = true;
       isOpen = true;
       root.hidden = false;
       root.classList.remove('is-closing');
@@ -237,8 +243,14 @@
     }
   }
 
+  function restoreScroll() {
+    if (window.scrollY !== pageY) window.scrollTo({ top: pageY, behavior: 'instant' });
+  }
+  window.addEventListener('scroll', function () { if (holdScroll) restoreScroll(); });
+
   function finishClose() {
     isOpen = false;
+    restoreScroll();
     root.classList.remove('is-open');
     root.classList.add('is-closing');
     background().forEach(function (n) { n.inert = false; });
@@ -246,6 +258,9 @@
       root.hidden = true;
       root.classList.remove('is-closing');
       document.documentElement.classList.remove('viewer-lock');
+      restoreScroll();
+      // Release a frame later: a history-driven anchor scroll can land just after the unlock.
+      requestAnimationFrame(function () { requestAnimationFrame(function () { holdScroll = false; }); });
       if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
     }, CLOSE_MS);
   }
@@ -329,8 +344,8 @@
     if (e.key === 'Escape') { e.preventDefault(); if (z.on) exitZoom(); else close(); }
     else if (z.on && (e.key === '+' || e.key === '=')) setZoom(z.s * WHEEL_STEP * WHEEL_STEP, z.x, z.y, true);
     else if (z.on && e.key === '-') setZoom(z.s / (WHEEL_STEP * WHEEL_STEP), z.x, z.y, true);
-    else if (!z.on && e.key === 'ArrowRight') { e.preventDefault(); step(1); }
-    else if (!z.on && e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
     else if (e.key === 'Tab') trapFocus(e);
   });
 
@@ -356,7 +371,7 @@
     else if (Math.abs(dx) + Math.abs(dy) < TAP_PX) enterZoom();
   });
 
-  /* Zoom layer: drag to pan, pinch, wheel, double tap; a plain tap/click goes back. */
+  /* Zoom layer: drag to pan, pinch, wheel, double tap; a swipe at 1× pages; a plain tap/click goes back. */
   var pointers = {}, gesture = null, moved = false, lastTap = 0, tapTimer = null;
   el.layer.tabIndex = -1;
 
@@ -400,6 +415,15 @@
     gesture = null;
     el.zoom.classList.remove('is-panning');
     if (!wasGesture || moved || e.type === 'pointercancel') return;
+
+    var dx = e.clientX - wasGesture.sx, dy = e.clientY - wasGesture.sy;
+    if (!wasGesture.pinch && Math.abs(dx) > SWIPE_PX && Math.abs(dx) > Math.abs(dy)) {
+      clearTimeout(tapTimer);
+      lastTap = 0;
+      step(dx < 0 ? 1 : -1);
+      return;
+    }
+    if (Math.abs(dx) + Math.abs(dy) >= TAP_PX) return; // a drag at 1× is not a tap
 
     if (e.pointerType === 'touch') {
       // Double tap toggles 1× and 2× (capped); a single tap returns after a short wait.
