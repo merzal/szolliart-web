@@ -59,7 +59,7 @@
     if (!groupsEl) return;
 
     var COL_W = 290, GAP = 22; // design: as many 290px columns as fit, 22px apart
-    var meta = JSON.parse(document.getElementById('works-meta').textContent);
+    var meta = JSON.parse(document.getElementById('works-data').textContent);
     var titleEl = section.querySelector('[data-works-title]');
     var countEl = section.querySelector('[data-works-count]');
     var yearChipsEl = section.querySelector('[data-year-chips]');
@@ -212,6 +212,8 @@
       var m = /^#muvek\/([a-z]+)(?:\/(\d{4}))?$/.exec(location.hash);
       if (!m || (m[1] !== 'all' && !meta.cats[m[1]])) return false;
       var year = m[2] ? Number(m[2]) : 'all';
+      // Coming back from the viewer (Back button) lands on the same filter: leave the page where it is.
+      if (m[1] === state.cat && year === state.year && groups.length) return true;
       state.cat = m[1];
       // A year the genre has no work in would show an empty list; fall back to every year.
       if (year !== 'all' && yearsOf(items.filter(inCat)).indexOf(year) < 0) year = 'all';
