@@ -61,7 +61,7 @@
         '</div>' +
         '<button class="inquiry__send" type="submit" data-send>Elküldöm</button>' +
         '<p class="inquiry__status" data-status role="alert" hidden></p>' +
-        '<p class="inquiry__note">A mű adatait automatikusan mellékeljük. Válasz e-mailben érkezik.</p>' +
+        '<p class="inquiry__note">A mű adatait automatikusan mellékeljük. Válasz e-mailben érkezik.<br><a href="adatvedelem.html">Adatkezelési tájékoztató</a></p>' +
       '</form>' +
       '<div class="inquiry__sent" data-sent hidden>' +
         '<span class="inquiry__check">' + ICON_CHECK + '</span>' +

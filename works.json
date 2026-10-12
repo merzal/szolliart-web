@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-12T09:31:14.686Z",
+  "generated": "2026-10-12T11:09:28.361Z",
   "categories": [
     {
       "id": "rajzok",
       "name": "Rajzok, vázlatok, skiccek",
       "cover": {
         "file": "assets/img/covers/rajzok.jpg",
-        "w": 1600,
-        "h": 694
+        "w": 968,
+        "h": 420
       }
     },
     {
@@ -15,8 +15,8 @@
       "name": "Portrék",
       "cover": {
         "file": "assets/img/covers/portrek.jpg",
-        "w": 1600,
-        "h": 694
+        "w": 968,
+        "h": 420
       }
     },
     {
@@ -24,8 +24,8 @@
       "name": "Táblaképek",
       "cover": {
         "file": "assets/img/covers/tablakepek.jpg",
-        "w": 1000,
-        "h": 841
+        "w": 720,
+        "h": 606
       }
     },
     {
@@ -33,8 +33,8 @@
       "name": "Kollázsok",
       "cover": {
         "file": "assets/img/covers/kollazsok.jpg",
-        "w": 1000,
-        "h": 843
+        "w": 720,
+        "h": 607
       }
     },
     {
@@ -42,8 +42,8 @@
       "name": "Installáció",
       "cover": {
         "file": "assets/img/covers/installacio.jpg",
-        "w": 1510,
-        "h": 694
+        "w": 914,
+        "h": 420
       }
     },
     {
@@ -51,8 +51,8 @@
       "name": "Tájképek",
       "cover": {
         "file": "assets/img/covers/tajkepek.jpg",
-        "w": 1600,
-        "h": 694
+        "w": 968,
+        "h": 420
       }
     },
     {
@@ -60,8 +60,8 @@
       "name": "Díszlettervezés",
       "cover": {
         "file": "assets/img/covers/diszlet.jpg",
-        "w": 971,
-        "h": 720
+        "w": 720,
+        "h": 534
       }
     }
   ],
@@ -69,6 +69,11 @@
     "file": "assets/img/about/szollosi-gabor.jpg",
     "w": 507,
     "h": 507
+  },
+  "og": {
+    "file": "assets/img/og/szolliart.jpg",
+    "w": 1000,
+    "h": 525
   },
   "works": [
     {

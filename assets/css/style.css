@@ -698,6 +698,24 @@ button { font: inherit; color: inherit; }
   color: var(--c-text-3);
 }
 .site-footer p { margin: 0; }
+.site-footer__link { color: inherit; border-bottom: 1px solid var(--line-link); }
+.site-footer__link:hover { color: var(--c-text); }
+.inquiry__note a { color: var(--c-text-2); border-bottom: 1px solid var(--line-link); }
+.inquiry__note a:hover { color: var(--c-text); }
+
+/* Simple pages: privacy notice, 404 */
+.page { padding: clamp(46px, 8vw, 96px) 0 clamp(40px, 6vw, 72px); max-width: 660px; }
+.page__title {
+  margin: 20px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 6vw, 56px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  text-wrap: pretty;
+}
+.page p { margin: 20px 0 0; font-size: 15px; line-height: 1.72; color: var(--c-text-2); text-wrap: pretty; }
+.page .btn { margin-top: 30px; }
 
 /* ------------------------------------------------------------------ */
 /* Viewer                                                             */
