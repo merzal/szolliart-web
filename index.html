@@ -9,8 +9,8 @@
 <script>document.documentElement.className = 'js';</script>
 <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=20cf9747">
-<script src="assets/js/app.js?v=199ea54e" defer></script>
+<link rel="stylesheet" href="assets/css/style.css?v=3f0c3050">
+<script src="assets/js/app.js?v=093f98da" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#tartalom">Ugrás a tartalomra</a>
@@ -169,11 +169,761 @@
   </section>
 
   <section id="muvek" class="section" aria-labelledby="muvek-cim">
-    <div class="section-head">
-      <p class="kicker">Művek</p>
-      <h2 class="section-title" id="muvek-cim">Portfólió</h2>
+    <div class="works-head">
+      <div>
+        <p class="kicker">Művek</p>
+        <h2 class="section-title" id="muvek-cim" data-works-title>Portfólió</h2>
+      </div>
+      <p class="works-head__count" data-works-count aria-live="polite">90 mű · 2013–2026</p>
     </div>
-    <!-- @works (2. fázis) -->
+    <ul class="chips" aria-label="Szűrés műfaj szerint">
+      <li><button class="chip" type="button" data-filter-cat="all" aria-pressed="true">Mind</button></li>
+      <li><button class="chip" type="button" data-filter-cat="rajzok" aria-pressed="false">Rajzok, vázlatok, skiccek</button></li>
+      <li><button class="chip" type="button" data-filter-cat="portrek" aria-pressed="false">Portrék</button></li>
+      <li><button class="chip" type="button" data-filter-cat="tablakepek" aria-pressed="false">Táblaképek</button></li>
+      <li><button class="chip" type="button" data-filter-cat="kollazsok" aria-pressed="false">Kollázsok</button></li>
+      <li><button class="chip" type="button" data-filter-cat="installacio" aria-pressed="false">Installáció</button></li>
+      <li><button class="chip" type="button" data-filter-cat="tajkepek" aria-pressed="false">Tájképek</button></li>
+      <li><button class="chip" type="button" data-filter-cat="diszlet" aria-pressed="false">Díszlettervezés</button></li>
+    </ul>
+    <ul class="chips chips--years" aria-label="Szűrés év szerint" data-year-chips>
+      <li><button class="chip" type="button" data-filter-year="all" aria-pressed="true">Minden év</button></li>
+      <li><button class="chip" type="button" data-filter-year="2026" aria-pressed="false">2026</button></li>
+      <li><button class="chip" type="button" data-filter-year="2025" aria-pressed="false">2025</button></li>
+      <li><button class="chip" type="button" data-filter-year="2024" aria-pressed="false">2024</button></li>
+      <li><button class="chip" type="button" data-filter-year="2023" aria-pressed="false">2023</button></li>
+      <li><button class="chip" type="button" data-filter-year="2019" aria-pressed="false">2019</button></li>
+      <li><button class="chip" type="button" data-filter-year="2018" aria-pressed="false">2018</button></li>
+      <li><button class="chip" type="button" data-filter-year="2017" aria-pressed="false">2017</button></li>
+      <li><button class="chip" type="button" data-filter-year="2016" aria-pressed="false">2016</button></li>
+      <li><button class="chip" type="button" data-filter-year="2015" aria-pressed="false">2015</button></li>
+      <li><button class="chip" type="button" data-filter-year="2014" aria-pressed="false">2014</button></li>
+      <li><button class="chip" type="button" data-filter-year="2013" aria-pressed="false">2013</button></li>
+    </ul>
+    <div class="works-layout">
+      <ul class="year-rail" aria-label="Ugrás évre" data-rail hidden></ul>
+      <div class="year-groups" data-groups>
+      <section class="year-group" id="ev-2026" aria-labelledby="ev-2026-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2026-cim">2026</h3>
+          <p class="year-group__count">2 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="rajzok" data-year="2026">
+            <a class="work__link" href="#mu/20260225">
+              <div class="work__media"><img src="assets/img/works/20260225.jpg" width="670" height="474" alt="20260225, ceruza, akvarellpapír, porpasztell, A4, 2026" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20260225</h4><span class="work__year">2026</span></div>
+              <p class="work__size">A4</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2026">
+            <a class="work__link" href="#mu/20260625-hatvan">
+              <div class="work__media"><img src="assets/img/works/20260625-hatvan.jpg" width="670" height="503" alt="20260625 – Hatvan, vegyes technika (vászon, akril, papír ragasztás, tűfilc, szén, akvarell), 30×40 cm, 2026" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20260625 – Hatvan</h4><span class="work__year">2026</span></div>
+              <p class="work__size">30×40 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2025" aria-labelledby="ev-2025-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2025-cim">2025</h3>
+          <p class="year-group__count">10 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/osztott-terek-i">
+              <div class="work__media"><img src="assets/img/works/osztott-terek-i.jpg" width="668" height="670" alt="Osztott terek (I.), vegyes technika (fa, akril, juta, textil), 200×200×20 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Osztott terek (I.)</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×20 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/lelogocitromhej">
+              <div class="work__media"><img src="assets/img/works/lelogocitromhej.jpg" width="670" height="666" alt="Lelógócitromhéj, vegyes technika (fa, akril, juta, textil), 200×200×12 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lelógócitromhéj</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×12 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/az-utolso-cigaretta">
+              <div class="work__media"><img src="assets/img/works/az-utolso-cigaretta.jpg" width="670" height="670" alt="Az utolsó cigaretta, vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”), 200×200×7 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Az utolsó cigaretta</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×7 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/schengen">
+              <div class="work__media"><img src="assets/img/works/schengen.jpg" width="670" height="667" alt="Schengen, vegyes technika (fa, akril, műanyag, vászon, juta, textil, fémháló), 200×200×5 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Schengen</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/34-het-az-anktarktisz-lecsapolasan-eluszo-stilizalt-kacsa">
+              <div class="work__media"><img src="assets/img/works/34-het-az-anktarktisz-lecsapolasan-eluszo-stilizalt-kacsa.jpg" width="670" height="670" alt="34. hét – Az Anktarktisz lecsapolásán elúszó stilizált kacsa, vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”), 200×200×5 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">34. hét – Az Anktarktisz lecsapolásán elúszó stilizált kacsa</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/rakonczay">
+              <div class="work__media"><img src="assets/img/works/rakonczay.jpg" width="670" height="670" alt="Rakonczay, vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”), 200×200×40 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Rakonczay</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×40 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/mive-lettel-pangea">
+              <div class="work__media"><img src="assets/img/works/mive-lettel-pangea.jpg" width="633" height="670" alt="Mivé lettél Pangea?, vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”, perforált lemez), 200×220×15 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Mivé lettél Pangea?</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×220×15 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/mulatsag-utan-rendrakasra-felkeszulve">
+              <div class="work__media"><img src="assets/img/works/mulatsag-utan-rendrakasra-felkeszulve.jpg" width="670" height="670" alt="Mulatság után rendrakásra felkészülve, vegyes technika (fa, akril, textil), 200×200×3 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Mulatság után rendrakásra felkészülve</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×3 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/lilla-nst-a-szeretet-210-db-megnyilvanulasa">
+              <div class="work__media"><img src="assets/img/works/lilla-nst-a-szeretet-210-db-megnyilvanulasa.jpg" width="670" height="604" alt="Lilla NST – A szeretet 210 db megnyilvánulása, vegyes technika (fa, akril, juta, textil, fém, injekciós fecskendő, drót, rajzszén), 200×200×5 cm, 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lilla NST – A szeretet 210 db megnyilvánulása</h4><span class="work__year">2025</span></div>
+              <p class="work__size">200×200×5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2025">
+            <a class="work__link" href="#mu/felosztott-terek">
+              <div class="work__media"><img src="assets/img/works/felosztott-terek.jpg" width="670" height="225" alt="(fel)osztott terek, vegyes technika (fa, akril, textil, leselejtezett PVC-padlólemez, fém, drót), 600×200×15 cm (3 db 200×200 cm), 2025" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">(fel)osztott terek</h4><span class="work__year">2025</span></div>
+              <p class="work__size">600×200×15 cm (3 db 200×200 cm)</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2024" aria-labelledby="ev-2024-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2024-cim">2024</h3>
+          <p class="year-group__count">12 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="rajzok" data-year="2024">
+            <a class="work__link" href="#mu/20240531-kaszpi">
+              <div class="work__media"><img src="assets/img/works/20240531-kaszpi.jpg" width="473" height="670" alt="20240531 kaszpi, ceruza, papír, 210×297 mm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20240531 kaszpi</h4><span class="work__year">2024</span></div>
+              <p class="work__size">210×297 mm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/narantshej-terben">
+              <div class="work__media"><img src="assets/img/works/narantshej-terben.jpg" width="670" height="670" alt="Narantshéj-térben, vegyes technika (akril, textil, fa), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Narantshéj-térben</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/kilincs">
+              <div class="work__media"><img src="assets/img/works/kilincs.jpg" width="670" height="667" alt="Kilincs, vegyes technika (akril, textil, fa), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kilincs</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/presser-kek-billentyu-az-lgt-emlekere">
+              <div class="work__media"><img src="assets/img/works/presser-kek-billentyu-az-lgt-emlekere.jpg" width="668" height="670" alt="Presser – Kék billentyű az LGT emlékére, vegyes technika (akril, jutavászon, textil, fa, parketta), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Presser – Kék billentyű az LGT emlékére</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/zold-ablak-sarga-szek-gaza">
+              <div class="work__media"><img src="assets/img/works/zold-ablak-sarga-szek-gaza.jpg" width="670" height="665" alt="Zöld ablak sárga szék (Gáza), vegyes technika (akril, vászon, textil, fa), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Zöld ablak sárga szék (Gáza)</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/fa-taj-az-eredendo">
+              <div class="work__media"><img src="assets/img/works/fa-taj-az-eredendo.jpg" width="667" height="670" alt="Fa-Táj (Az eredendő), vegyes technika (akril, vászon, textil, fa, parketta), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Fa-Táj (Az eredendő)</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/karsai-mikor-az-ember-nyomhagyasa-megvaltozik">
+              <div class="work__media"><img src="assets/img/works/karsai-mikor-az-ember-nyomhagyasa-megvaltozik.jpg" width="670" height="669" alt="Karsai – Mikor az ember nyomhagyása megváltozik!, vegyes technika (akril, vászon, textil, fa, csemperagasztó), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Karsai – Mikor az ember nyomhagyása megváltozik!</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/cim-nelkuli-morfeusz-avagy-kek-vagy-piros-pirula-valassz">
+              <div class="work__media"><img src="assets/img/works/cim-nelkuli-morfeusz-avagy-kek-vagy-piros-pirula-valassz.jpg" width="670" height="668" alt="Cím nélküli – Morfeusz avagy kék vagy piros pirula válassz!, vegyes technika (akril, textil, fa, fém tárgyak), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Cím nélküli – Morfeusz avagy kék vagy piros pirula válassz!</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/buvojohely-kegyelem">
+              <div class="work__media"><img src="assets/img/works/buvojohely-kegyelem.jpg" width="668" height="670" alt="Búvó(jó)hely – (Kegyelem?), vegyes technika (akril, porpasztell, vászon, fa, plüssfigurák), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Búvó(jó)hely – (Kegyelem?)</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/szaghaz-csigahaz-avagy-a-folyoparton-barmi-megtortenhet">
+              <div class="work__media"><img src="assets/img/works/szaghaz-csigahaz-avagy-a-folyoparton-barmi-megtortenhet.jpg" width="670" height="665" alt="Szágház-CSIGAház avagy a folyóparton bármi megtörténhet., vegyes technika (akril, jutavászon, fa, fém), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Szágház-CSIGAház avagy a folyóparton bármi megtörténhet.</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2024">
+            <a class="work__link" href="#mu/judas">
+              <div class="work__media"><img src="assets/img/works/judas.jpg" width="670" height="665" alt="Júdás, vegyes technika (akril, vászon, textil, fa), 200×200 cm, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Júdás</h4><span class="work__year">2024</span></div>
+              <p class="work__size">200×200 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="diszlet" data-year="2024">
+            <a class="work__link" href="#mu/valahol-europaban">
+              <div class="work__media"><img src="assets/img/works/valahol-europaban.jpg" width="1600" height="796" alt="Valahol Európában, díszlettervezés, színpadkép, 2024" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Valahol Európában</h4><span class="work__year">2024</span></div>
+              <p class="work__size">színpadkép</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2023" aria-labelledby="ev-2023-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2023-cim">2023</h3>
+          <p class="year-group__count">3 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="kollazsok" data-year="2023">
+            <a class="work__link" href="#mu/egyensuly">
+              <div class="work__media"><img src="assets/img/works/egyensuly.jpg" width="379" height="670" alt="Egyensúly, vegyes technika (fa, akril, textil), 24,5×44 cm, 2023" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Egyensúly</h4><span class="work__year">2023</span></div>
+              <p class="work__size">24,5×44 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2023">
+            <a class="work__link" href="#mu/erdo-hommage-a-giacometti">
+              <div class="work__media"><img src="assets/img/works/erdo-hommage-a-giacometti.jpg" width="670" height="432" alt="Erdő (Hommage a Giacometti), vegyes technika (fa, akril, textil), 58×90 cm, 2023" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Erdő (Hommage a Giacometti)</h4><span class="work__year">2023</span></div>
+              <p class="work__size">58×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2023">
+            <a class="work__link" href="#mu/mindenki-szereti-a-tortat">
+              <div class="work__media"><img src="assets/img/works/mindenki-szereti-a-tortat.jpg" width="670" height="469" alt="Mindenki szereti a tortát!, vegyes technika (fa, akril, rétegelt lemez, textil, fémháló), 82×116 cm, 2023" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Mindenki szereti a tortát!</h4><span class="work__year">2023</span></div>
+              <p class="work__size">82×116 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2019" aria-labelledby="ev-2019-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2019-cim">2019</h3>
+          <p class="year-group__count">3 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="tablakepek" data-year="2019">
+            <a class="work__link" href="#mu/no-17">
+              <div class="work__media"><img src="assets/img/works/no-17.jpg" width="670" height="291" alt="No.17, vegyes technika, vászon, 150×350 cm, 2019" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">No.17</h4><span class="work__year">2019</span></div>
+              <p class="work__size">150×350 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2019">
+            <a class="work__link" href="#mu/kollazs-11">
+              <div class="work__media"><img src="assets/img/works/kollazs-11.jpg" width="670" height="402" alt="Kollázs 11, vegyes technika, vászon, 150×250 cm, 2019" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kollázs 11</h4><span class="work__year">2019</span></div>
+              <p class="work__size">150×250 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2019">
+            <a class="work__link" href="#mu/frottazs-7">
+              <div class="work__media"><img src="assets/img/works/frottazs-7.jpg" width="670" height="400" alt="Frottázs 7, vegyes technika, vászon, 150×250 cm, 2019" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Frottázs 7</h4><span class="work__year">2019</span></div>
+              <p class="work__size">150×250 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2018" aria-labelledby="ev-2018-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2018-cim">2018</h3>
+          <p class="year-group__count">7 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/kek-11">
+              <div class="work__media"><img src="assets/img/works/kek-11.jpg" width="459" height="670" alt="Kék.11, 130,5×90,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kék.11</h4><span class="work__year">2018</span></div>
+              <p class="work__size">130,5×90,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/maszkolt">
+              <div class="work__media"><img src="assets/img/works/maszkolt.jpg" width="424" height="670" alt="Maszkolt, 140×90,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Maszkolt</h4><span class="work__year">2018</span></div>
+              <p class="work__size">140×90,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/no-11">
+              <div class="work__media"><img src="assets/img/works/no-11.jpg" width="476" height="670" alt="No.11, 133×90 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">No.11</h4><span class="work__year">2018</span></div>
+              <p class="work__size">133×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/no-13">
+              <div class="work__media"><img src="assets/img/works/no-13.jpg" width="419" height="670" alt="No.13, 160×99,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">No.13</h4><span class="work__year">2018</span></div>
+              <p class="work__size">160×99,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/kek13">
+              <div class="work__media"><img src="assets/img/works/kek13.jpg" width="395" height="670" alt="Kék13, 142×85,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kék13</h4><span class="work__year">2018</span></div>
+              <p class="work__size">142×85,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/no-9">
+              <div class="work__media"><img src="assets/img/works/no-9.jpg" width="395" height="670" alt="No.9, 145×85,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">No.9</h4><span class="work__year">2018</span></div>
+              <p class="work__size">145×85,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2018">
+            <a class="work__link" href="#mu/no-7tobb">
+              <div class="work__media"><img src="assets/img/works/no-7tobb.jpg" width="442" height="670" alt="No.7+több, 150×99,5 cm, 2018" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">No.7+több</h4><span class="work__year">2018</span></div>
+              <p class="work__size">150×99,5 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2017" aria-labelledby="ev-2017-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2017-cim">2017</h3>
+          <p class="year-group__count">11 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-i">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-i.jpg" width="670" height="644" alt="Lábom alatt I., 52,5×50 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt I.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">52,5×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-ii">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-ii.jpg" width="670" height="614" alt="Lábom alatt II., 65,5×60 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt II.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">65,5×60 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-iii">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-iii.jpg" width="598" height="670" alt="Lábom alatt III., 75,5×85 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt III.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">75,5×85 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-iv">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-iv.jpg" width="453" height="670" alt="Lábom alatt IV., 60×90 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt IV.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">60×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-v">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-v.jpg" width="461" height="670" alt="Lábom alatt V., 60×88,5 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt V.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">60×88,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/labom-alatt-vi">
+              <div class="work__media"><img src="assets/img/works/labom-alatt-vi.jpg" width="502" height="670" alt="Lábom alatt VI., 60,5×45 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lábom alatt VI.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">60,5×45 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/fekete-sarga">
+              <div class="work__media"><img src="assets/img/works/fekete-sarga.jpg" width="670" height="445" alt="Fekete-Sárga (Lábrács, Lábtörlő képek), 58×88 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Fekete-Sárga (Lábrács, Lábtörlő képek)</h4><span class="work__year">2017</span></div>
+              <p class="work__size">58×88 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/voros-kek-erezet">
+              <div class="work__media"><img src="assets/img/works/voros-kek-erezet.jpg" width="670" height="433" alt="Vörös kék erezet (Lábrács, Lábtörlő képek), 58×90 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Vörös kék erezet (Lábrács, Lábtörlő képek)</h4><span class="work__year">2017</span></div>
+              <p class="work__size">58×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/kek-bordo">
+              <div class="work__media"><img src="assets/img/works/kek-bordo.jpg" width="179" height="760" alt="Kék-bordó (Lábrács, Lábtörlő képek), akril, vászon, 36×148 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kék-bordó (Lábrács, Lábtörlő képek)</h4><span class="work__year">2017</span></div>
+              <p class="work__size">36×148 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/itt-ott-i">
+              <div class="work__media"><img src="assets/img/works/itt-ott-i.jpg" width="670" height="666" alt="Itt Ott I., 79×78 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Itt Ott I.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">79×78 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2017">
+            <a class="work__link" href="#mu/itt-ott-ii">
+              <div class="work__media"><img src="assets/img/works/itt-ott-ii.jpg" width="670" height="523" alt="Itt Ott II., 85×67 cm, 2017" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Itt Ott II.</h4><span class="work__year">2017</span></div>
+              <p class="work__size">85×67 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2016" aria-labelledby="ev-2016-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2016-cim">2016</h3>
+          <p class="year-group__count">19 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="portrek" data-year="2016">
+            <a class="work__link" href="#mu/juci-portre">
+              <div class="work__media"><img src="assets/img/works/juci-portre.jpg" width="670" height="643" alt="Juci portré, akril, jutavászon, 90×90 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Juci portré</h4><span class="work__year">2016</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2016">
+            <a class="work__link" href="#mu/torok-istvan-portre">
+              <div class="work__media"><img src="assets/img/works/torok-istvan-portre.jpg" width="665" height="670" alt="Török István portré, akril, jutavászon, 90×90 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Török István portré</h4><span class="work__year">2016</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2016">
+            <a class="work__link" href="#mu/szvetnik-joachim-portreja">
+              <div class="work__media"><img src="assets/img/works/szvetnik-joachim-portreja.jpg" width="670" height="662" alt="Szvetnik Joachim portréja (fotó reprodukcióról), akril, jutavászon, 90×90 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Szvetnik Joachim portréja (fotó reprodukcióról)</h4><span class="work__year">2016</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2016">
+            <a class="work__link" href="#mu/kiss-attila-portreja">
+              <div class="work__media"><img src="assets/img/works/kiss-attila-portreja.jpg" width="669" height="670" alt="Kiss Attila portréja (fotóról), akril, jutavászon, 70×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kiss Attila portréja (fotóról)</h4><span class="work__year">2016</span></div>
+              <p class="work__size">70×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/pah-160730">
+              <div class="work__media"><img src="assets/img/works/pah-160730.jpg" width="670" height="492" alt="PAH 160730, 130×90 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">PAH 160730</h4><span class="work__year">2016</span></div>
+              <p class="work__size">130×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/osztas">
+              <div class="work__media"><img src="assets/img/works/osztas.jpg" width="670" height="299" alt="Osztás, 150×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Osztás</h4><span class="work__year">2016</span></div>
+              <p class="work__size">150×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/szomszed-vedre">
+              <div class="work__media"><img src="assets/img/works/szomszed-vedre.jpg" width="482" height="670" alt="Szomszéd vedre, 50×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Szomszéd vedre</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/cim-nelkul-i">
+              <div class="work__media"><img src="assets/img/works/cim-nelkul-i.jpg" width="670" height="558" alt="Cím nélkül I., 55×45 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Cím nélkül I.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">55×45 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/cim-nelkul-ii">
+              <div class="work__media"><img src="assets/img/works/cim-nelkul-ii.jpg" width="670" height="493" alt="Cím nélkül II., 70×50 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Cím nélkül II.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">70×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/kotelek-lakatok">
+              <div class="work__media"><img src="assets/img/works/kotelek-lakatok.jpg" width="670" height="506" alt="Kötelék (Lakatok), 51×39 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kötelék (Lakatok)</h4><span class="work__year">2016</span></div>
+              <p class="work__size">51×39 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/fuzfa-i">
+              <div class="work__media"><img src="assets/img/works/fuzfa-i.jpg" width="550" height="670" alt="Fűzfa I., 50×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Fűzfa I.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/fuzfa-ii">
+              <div class="work__media"><img src="assets/img/works/fuzfa-ii.jpg" width="563" height="670" alt="Fűzfa II., 50×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Fűzfa II.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/negyedik-hommage-istvan-bencsik">
+              <div class="work__media"><img src="assets/img/works/negyedik-hommage-istvan-bencsik.jpg" width="527" height="670" alt="Negyedik (Hommage – István Bencsik), vegyes technika, fa, 36×45 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Negyedik (Hommage – István Bencsik)</h4><span class="work__year">2016</span></div>
+              <p class="work__size">36×45 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/ta-i">
+              <div class="work__media"><img src="assets/img/works/ta-i.jpg" width="486" height="670" alt="TÁ I., vegyes technika, fa, 50×70 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">TÁ I.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/ta-ii">
+              <div class="work__media"><img src="assets/img/works/ta-ii.jpg" width="670" height="527" alt="TÁ II., vegyes technika, fa, 30×40 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">TÁ II.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">30×40 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/ta-iii">
+              <div class="work__media"><img src="assets/img/works/ta-iii.jpg" width="657" height="670" alt="TÁ III., vegyes technika, fa, 50×50 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">TÁ III.</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/400-ft">
+              <div class="work__media"><img src="assets/img/works/400-ft.jpg" width="670" height="670" alt="400 Ft, vegyes technika, fa, 50×50 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">400 Ft</h4><span class="work__year">2016</span></div>
+              <p class="work__size">50×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="kollazsok" data-year="2016">
+            <a class="work__link" href="#mu/szifon">
+              <div class="work__media"><img src="assets/img/works/szifon.jpg" width="456" height="670" alt="Szifon, vegyes technika, fa, 32×46,5 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Szifon</h4><span class="work__year">2016</span></div>
+              <p class="work__size">32×46,5 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="installacio" data-year="2016">
+            <a class="work__link" href="#mu/masnap">
+              <div class="work__media"><img src="assets/img/works/masnap.jpg" width="535" height="670" alt="Másnap, tárgykollázs · társalkotó: Somorai Renáta, 150×100 cm, 2016" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Másnap</h4><span class="work__year">2016</span></div>
+              <p class="work__size">150×100 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2015" aria-labelledby="ev-2015-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2015-cim">2015</h3>
+          <p class="year-group__count">11 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="portrek" data-year="2015">
+            <a class="work__link" href="#mu/frici-portreja">
+              <div class="work__media"><img src="assets/img/works/frici-portreja.jpg" width="670" height="670" alt="Frici portréja, akril, jutavászon, 90×90 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Frici portréja</h4><span class="work__year">2015</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2015">
+            <a class="work__link" href="#mu/onarckep-2-db">
+              <div class="work__media"><img src="assets/img/works/onarckep-2-db.jpg" width="670" height="658" alt="Önarckép 2 db, akril, jutavászon, 180×180 cm (2 db 90×180 cm), 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Önarckép 2 db</h4><span class="work__year">2015</span></div>
+              <p class="work__size">180×180 cm (2 db 90×180 cm)</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2015">
+            <a class="work__link" href="#mu/mama-portre">
+              <div class="work__media"><img src="assets/img/works/mama-portre.jpg" width="665" height="670" alt="Mama portré, akril, jutavászon, 90×90 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Mama portré</h4><span class="work__year">2015</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="portrek" data-year="2015">
+            <a class="work__link" href="#mu/mint-mondrian">
+              <div class="work__media"><img src="assets/img/works/mint-mondrian.jpg" width="648" height="670" alt="…, mint Mondrian, akril, jutavászon, 90×90 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">…, mint Mondrian</h4><span class="work__year">2015</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2015">
+            <a class="work__link" href="#mu/cim-nelkul-kavicsok">
+              <div class="work__media"><img src="assets/img/works/cim-nelkul-kavicsok.jpg" width="670" height="652" alt="Cím nélkül (Kavicsok), akril, jutavászon, 90×90 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Cím nélkül (Kavicsok)</h4><span class="work__year">2015</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tablakepek" data-year="2015">
+            <a class="work__link" href="#mu/cim-nelkul-kavicsok-atirat">
+              <div class="work__media"><img src="assets/img/works/cim-nelkul-kavicsok-atirat.jpg" width="670" height="659" alt="Cím nélkül (Kavicsok átirat), akril, jutavászon, 90×90 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Cím nélkül (Kavicsok átirat)</h4><span class="work__year">2015</span></div>
+              <p class="work__size">90×90 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2015">
+            <a class="work__link" href="#mu/all-a-levego">
+              <div class="work__media"><img src="assets/img/works/all-a-levego.jpg" width="670" height="556" alt="Áll a levegő, akril, vászon, 50×60 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Áll a levegő</h4><span class="work__year">2015</span></div>
+              <p class="work__size">50×60 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2015">
+            <a class="work__link" href="#mu/zrinyi-utca">
+              <div class="work__media"><img src="assets/img/works/zrinyi-utca.jpg" width="670" height="562" alt="Zrínyi utca…, akril, vászon, 50×60 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Zrínyi utca…</h4><span class="work__year">2015</span></div>
+              <p class="work__size">50×60 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2015">
+            <a class="work__link" href="#mu/park-reszlet">
+              <div class="work__media"><img src="assets/img/works/park-reszlet.jpg" width="670" height="476" alt="Park részlet, akril, vászon, 35×50 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Park részlet</h4><span class="work__year">2015</span></div>
+              <p class="work__size">35×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2015">
+            <a class="work__link" href="#mu/p-p-setalo">
+              <div class="work__media"><img src="assets/img/works/p-p-setalo.jpg" width="562" height="670" alt="P-p sétáló, akril, vászon, 60×50 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">P-p sétáló</h4><span class="work__year">2015</span></div>
+              <p class="work__size">60×50 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2015">
+            <a class="work__link" href="#mu/kiemeles-i">
+              <div class="work__media"><img src="assets/img/works/kiemeles-i.jpg" width="670" height="519" alt="Kiemelés I., akril, vászon, 50×70 cm, 2015" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Kiemelés I.</h4><span class="work__year">2015</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2014" aria-labelledby="ev-2014-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2014-cim">2014</h3>
+          <p class="year-group__count">10 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/20140428-194316-afrikai-no-portreja">
+              <div class="work__media"><img src="assets/img/works/20140428-194316-afrikai-no-portreja.jpg" width="465" height="670" alt="20140428 194316 Afrikai nő portréja, szén, karton, A1, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20140428 194316 Afrikai nő portréja</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A1</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/20140428-194543-csendelet">
+              <div class="work__media"><img src="assets/img/works/20140428-194543-csendelet.jpg" width="482" height="670" alt="20140428 194543 Csendélet, szén, papír, A2, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20140428 194543 Csendélet</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A2</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/20140428-194631-csendelet-uvegek-es-kocka">
+              <div class="work__media"><img src="assets/img/works/20140428-194631-csendelet-uvegek-es-kocka.jpg" width="485" height="670" alt="20140428 194631 Csendélet üvegek és kocka, szén, papír, A2, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20140428 194631 Csendélet üvegek és kocka</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A2</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/20140428-194651-portre">
+              <div class="work__media"><img src="assets/img/works/20140428-194651-portre.jpg" width="494" height="670" alt="20140428 194651 Portré, szén, papír, A3, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20140428 194651 Portré</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A3</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/csendelet-szodasuveggel-ceruza">
+              <div class="work__media"><img src="assets/img/works/csendelet-szodasuveggel-ceruza.jpg" width="506" height="670" alt="Csendélet szódásüveggel, ceruza, papír, A3, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Csendélet szódásüveggel</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A3</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/csendelet-szodasuveggel-szen">
+              <div class="work__media"><img src="assets/img/works/csendelet-szodasuveggel-szen.jpg" width="505" height="670" alt="Csendélet szódásüveggel, szén, papír, A3, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Csendélet szódásüveggel</h4><span class="work__year">2014</span></div>
+              <p class="work__size">A3</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/tanulmany-az-1-kg-hoz">
+              <div class="work__media"><img src="assets/img/works/tanulmany-az-1-kg-hoz.jpg" width="670" height="503" alt="Tanulmány az 1 kg-hoz, szén, papír, 50×70 cm, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Tanulmány az 1 kg-hoz</h4><span class="work__year">2014</span></div>
+              <p class="work__size">50×70 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2014">
+            <a class="work__link" href="#mu/beregi-vendel-portreja">
+              <div class="work__media"><img src="assets/img/works/beregi-vendel-portreja.jpg" width="418" height="670" alt="Beregi Vendel portréja, karton, pasztell, 70×100 cm, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Beregi Vendel portréja</h4><span class="work__year">2014</span></div>
+              <p class="work__size">70×100 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2014">
+            <a class="work__link" href="#mu/lement-e">
+              <div class="work__media"><img src="assets/img/works/lement-e.jpg" width="670" height="321" alt="Lement-e, 60×135 cm, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lement-e</h4><span class="work__year">2014</span></div>
+              <p class="work__size">60×135 cm</p>
+            </a>
+          </li>
+          <li class="work" data-cat="tajkepek" data-year="2014">
+            <a class="work__link" href="#mu/lement-e-ii">
+              <div class="work__media"><img src="assets/img/works/lement-e-ii.jpg" width="669" height="670" alt="Lement-e II, 100×100 cm, 2014" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">Lement-e II</h4><span class="work__year">2014</span></div>
+              <p class="work__size">100×100 cm</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="year-group" id="ev-2013" aria-labelledby="ev-2013-cim">
+        <div class="year-group__head">
+          <h3 class="year-group__year" id="ev-2013-cim">2013</h3>
+          <p class="year-group__count">2 mű</p>
+        </div>
+        <ul class="masonry">
+          <li class="work" data-cat="rajzok" data-year="2013">
+            <a class="work__link" href="#mu/20130428-194911-csendelet">
+              <div class="work__media"><img src="assets/img/works/20130428-194911-csendelet.jpg" width="670" height="479" alt="20130428 194911 Csendélet, szén, papír, A3, 2013" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20130428 194911 Csendélet</h4><span class="work__year">2013</span></div>
+              <p class="work__size">A3</p>
+            </a>
+          </li>
+          <li class="work" data-cat="rajzok" data-year="2013">
+            <a class="work__link" href="#mu/20140428-194733-portre-fotorol">
+              <div class="work__media"><img src="assets/img/works/20140428-194733-portre-fotorol.jpg" width="472" height="670" alt="20140428 194733 Portré-fotóról, szén, papír, A2, 2013" loading="lazy" decoding="async"></div>
+              <div class="work__meta"><h4 class="work__title">20140428 194733 Portré-fotóról</h4><span class="work__year">2013</span></div>
+              <p class="work__size">A2</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      </div>
+    </div>
+    <script type="application/json" id="works-meta">{"cats":{"rajzok":"Rajzok, vázlatok, skiccek","portrek":"Portrék","tablakepek":"Táblaképek","kollazsok":"Kollázsok","installacio":"Installáció","tajkepek":"Tájképek","diszlet":"Díszlettervezés"}}</script>
   </section>
 
   <section id="rolam" class="section" aria-label="Rólam">

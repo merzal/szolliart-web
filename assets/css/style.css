@@ -51,6 +51,8 @@
   --c-text: #F1E9E4;
   --c-text-2: #B3A8BA;
   --c-text-3: #968A9E;
+  /* Design uses #6C6076 for inactive rail years (3.1:1); lightened to the closest value that passes WCAG AA (4.5:1). */
+  --c-text-4: #867A90;
   --c-accent: #A9E3C8;
   --c-accent-strong: #7FD1AE;
   --c-header: rgba(23, 19, 28, .72);
@@ -126,8 +128,8 @@ button { font: inherit; color: inherit; }
   border-radius: 4px;
 }
 
-/* Anchored sections stop below the sticky header (design: header height + 18px). */
-[id] { scroll-margin-top: calc(var(--header-h) + 18px); }
+/* Anchored sections stop 18px below the sticky header (74px + 1px border), as the design's scrollTo does. */
+[id] { scroll-margin-top: calc(var(--header-h) + 1px + 18px); }
 
 .visually-hidden {
   position: absolute !important;
@@ -400,6 +402,129 @@ button { font: inherit; color: inherit; }
   justify-content: center;
   color: var(--c-accent-strong);
 }
+
+/* Portfolio */
+.works-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 30px;
+  margin-bottom: 28px;
+}
+.works-head__count { margin: 0; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--c-text-2); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 30px; padding: 0; list-style: none; }
+.chips--years { margin-bottom: 34px; padding-top: 2px; }
+.chip {
+  padding: 9px 17px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-control);
+  background: transparent;
+  color: var(--c-text-2);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.chips--years .chip {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border-color: var(--line);
+  color: var(--c-text-3);
+  font-size: 12px;
+}
+.chip[aria-pressed="true"] { color: var(--c-accent); background: var(--accent-wash); border-color: var(--accent-line); }
+.chips--years .chip[aria-pressed="true"] { border-color: rgba(127, 209, 174, .34); }
+/* Filtering needs JavaScript; without it every work is listed anyway. */
+.no-js .chips { display: none; }
+
+.works-layout { display: flex; align-items: flex-start; gap: clamp(20px, 3vw, 40px); }
+.year-rail {
+  position: sticky;
+  top: 110px;
+  flex: none;
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 4px 0 0;
+  list-style: none;
+}
+.year-rail[hidden] { display: none; }
+@media (max-width: 779.98px) { .year-rail { display: none; } }
+.year-rail a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text-4);
+}
+.year-rail a::before { content: ""; flex: none; width: 10px; height: 1px; background: currentColor; }
+.year-rail a:hover { color: var(--c-text); }
+.year-rail a[aria-current="true"] { color: var(--c-accent); }
+.year-rail a[aria-current="true"]::before { width: 20px; }
+
+.year-groups { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(34px, 5vw, 54px); }
+.year-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.year-group__year {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-accent);
+}
+.year-group__count { flex: 1; min-width: 0; margin: 0; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--c-text-3); }
+
+/* Grid: without JS (or before layout) a plain grid; app.js then places the
+   cards round-robin into columns like the design, keeping DOM order intact. */
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
+  gap: 0 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.masonry.is-laid-out { display: block; position: relative; }
+.masonry.is-laid-out > .work { position: absolute; top: 0; left: 0; }
+
+.work { margin-bottom: 22px; }
+.work__link { display: block; color: var(--c-text); }
+.work__link:hover { color: var(--c-text); }
+.work__media {
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--c-surface-2);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .4);
+}
+.work__media img { width: 100%; height: auto; filter: var(--art-filter); }
+.work__meta { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; }
+.work__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  text-wrap: pretty;
+}
+.work__year { flex: none; font-size: 11.5px; font-variant-numeric: tabular-nums; color: var(--c-text-3); }
+.work__size { margin: 3px 0 0; font-size: 11.5px; font-variant-numeric: tabular-nums; color: var(--c-text-2); }
 
 /* About */
 .about {
