@@ -114,6 +114,16 @@
     el.status.textContent = w.status;
     el.status.hidden = !w.status;
     el.note.textContent = w.note;
+    if (w.note && w.noteUrl) {
+      var a = document.createElement('a');
+      a.className = 'text-link';
+      a.href = w.noteUrl;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = w.note;
+      el.note.textContent = '';
+      el.note.appendChild(a);
+    }
     el.note.hidden = !w.note;
     el.more.hidden = !!w.status;
     el.inquire.hidden = !!w.status;
@@ -324,7 +334,8 @@
     document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().slug, from: el.inquire } }));
   });
   // Design: the whole info block toggles the details sheet.
-  el.info.addEventListener('click', function () {
+  el.info.addEventListener('click', function (e) {
+    if (e.target.closest('a')) return; // the note link opens its page, the sheet stays open
     expanded = !expanded;
     render();
   });
