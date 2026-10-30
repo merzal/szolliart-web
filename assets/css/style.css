@@ -880,17 +880,8 @@ html.viewer-lock { scroll-behavior: auto; }
   /* Shade starts just above the caption instead of covering the image. */
   background: linear-gradient(to top, rgba(14, 11, 17, .88) 0, rgba(14, 11, 17, .75) calc(100% - 28px), rgba(14, 11, 17, 0) 100%);
 }
-.viewer__info { max-width: 720px; cursor: pointer; }
-.viewer__toggle {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: none;
-  text-align: left;
-  color: inherit;
-  cursor: pointer;
-}
+.viewer__info { max-width: 720px; }
+.viewer__info p { margin: 0; }
 .viewer__title {
   display: block;
   margin: 0 0 7px;
@@ -904,21 +895,11 @@ html.viewer-lock { scroll-behavior: auto; }
 }
 /* Caption-length titles (stage-set elements) would bury the image at display size. */
 .viewer__title.is-long { max-width: 46ch; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.25; letter-spacing: -.01em; }
-.viewer__line { display: block; font-size: 12.5px; font-variant-numeric: tabular-nums; color: rgba(241, 233, 228, .72); }
-.viewer__details {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(241, 233, 228, .22);
-  animation: fadeIn .25s both;
-}
-.viewer__details[hidden] { display: none; }
-.viewer__details p { margin: 0; }
-.viewer__medium { font-size: 13px; line-height: 1.6; color: rgba(241, 233, 228, .85); text-wrap: pretty; }
-.viewer__status { margin-top: 9px !important; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--c-accent); }
-.viewer__note { margin-top: 9px !important; font-size: 12.5px; line-height: 1.6; font-style: italic; color: rgba(241, 233, 228, .7); }
-.viewer__more { margin-top: 9px !important; font-size: 12.5px; line-height: 1.6; color: rgba(241, 233, 228, .6); }
-.viewer__status[hidden], .viewer__notes[hidden], .viewer__more[hidden] { display: none; }
-.viewer__hint { margin: 12px 0 0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--v-faint); }
+.viewer__line { margin-top: 7px !important; font-size: 13px; line-height: 1.5; font-variant-numeric: tabular-nums; color: rgba(241, 233, 228, .78); text-wrap: pretty; }
+.viewer__note { margin-top: 10px; font-size: 13px; line-height: 1.55; color: rgba(241, 233, 228, .85); text-wrap: pretty; }
+.viewer__note-label { color: rgba(241, 233, 228, .55); }
+.viewer__status { margin-top: 10px !important; font-size: 13px; font-style: italic; color: rgba(241, 233, 228, .78); }
+.viewer__line[hidden], .viewer__status[hidden], .viewer__notes[hidden] { display: none; }
 
 /* A5: several views of one work (not in the design). */
 .viewer__views { display: flex; gap: 4px; margin-top: 14px; }

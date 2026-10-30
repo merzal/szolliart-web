@@ -25,8 +25,6 @@
   };
 
   function two(n) { return (n < 10 ? '0' : '') + n; }
-  // Design: the one-line summary shows the technique up to the first "(" or ",".
-  function shortMedium(w) { return w.medium ? w.medium.split(/[(,]/)[0].trim() : 'vegyes technika'; }
   // Design: entry points outside the grid page through the work's whole genre, newest first.
   function catSorted(cat) {
     return DATA.works.filter(function (w) { return w.cat === cat; }).sort(function (a, b) { return b.year - a.year; });
@@ -50,18 +48,12 @@
     '</div>' +
     '<ul class="viewer__rail" data-rail aria-label="Ugrás évre"></ul>' +
     '<div class="viewer__bottom">' +
+      // Same caption as the grid card (title, size · medium, notes, status), always open.
       '<div class="viewer__info" data-info>' +
-        '<button class="viewer__toggle" type="button" data-toggle aria-expanded="false" aria-controls="viewer-details">' +
-          '<span class="viewer__title" id="viewer-title" data-title></span>' +
-          '<span class="viewer__line" data-line></span>' +
-        '</button>' +
-        '<div class="viewer__details" id="viewer-details" data-details hidden>' +
-          '<p class="viewer__medium" data-medium></p>' +
-          '<p class="viewer__status" data-status></p>' +
-          '<div class="viewer__notes" data-note></div>' +
-          '<p class="viewer__more" data-more>A műről szívesen küldök további fotót.</p>' +
-        '</div>' +
-        '<p class="viewer__hint" data-hint></p>' +
+        '<p class="viewer__title" id="viewer-title" data-title></p>' +
+        '<p class="viewer__line" data-line></p>' +
+        '<div class="viewer__notes" data-note></div>' +
+        '<p class="viewer__status" data-status></p>' +
       '</div>' +
       '<div class="viewer__views" data-views role="group" aria-label="A mű nézetei"></div>' +
       '<div class="viewer__controls">' +
@@ -76,16 +68,16 @@
   var $ = function (k) { return root.querySelector('[data-' + k + ']'); };
   var el = {
     stage: $('stage'), zoom: $('zoom'), img: $('img'), layer: $('layer'), zoomHint: $('zoom-hint'),
-    scope: $('scope'), close: $('close'), rail: $('rail'), info: $('info'), toggle: $('toggle'),
-    title: $('title'), line: $('line'), details: $('details'), medium: $('medium'), status: $('status'),
-    note: $('note'), more: $('more'), hint: $('hint'), views: $('views'), prev: $('prev'),
+    scope: $('scope'), close: $('close'), rail: $('rail'),
+    title: $('title'), line: $('line'), status: $('status'),
+    note: $('note'), views: $('views'), prev: $('prev'),
     counter: $('counter'), next: $('next'), inquire: $('inquire'),
   };
 
   /* ---------------------------------------------------------------- */
   /* State                                                            */
   /* ---------------------------------------------------------------- */
-  var list = [], idx = 0, view = 0, scope = '', expanded = false, isOpen = false;
+  var list = [], idx = 0, view = 0, scope = '', isOpen = false;
   var viaHistory = false; // opened by a hash navigation, so Back (or close) pops it
   var pending = null;     // list context from a grid click, picked up by the hash route
   var opener = null, closeTimer = null;
@@ -113,33 +105,30 @@
     el.scope.textContent = scope;
     el.title.textContent = w.title;
     el.title.classList.toggle('is-long', !!w.partOf && w.title.length > 40);
-    el.line.textContent = [w.size, shortMedium(w), w.year].filter(Boolean).join(' · ');
-    el.medium.textContent = w.medium || 'technika nincs jelölve';
-    el.status.textContent = w.status;
-    el.status.hidden = !w.status;
-    // The sheet shows plain notes unlabelled; a specific label (e.g. "Kiállítás") is spelled out.
+    el.line.textContent = [w.size, w.medium].filter(Boolean).join(' · ');
+    el.line.hidden = !el.line.textContent;
     el.note.textContent = '';
     w.notes.forEach(function (n) {
-      var p = document.createElement('p');
-      p.className = 'viewer__note';
-      if (n.label) p.textContent = n.label + ': ';
+      var box = document.createElement('div'), label = document.createElement('p'), text = document.createElement('p');
+      box.className = 'viewer__note';
+      label.className = 'viewer__note-label';
+      label.textContent = (n.label || 'Megjegyzés') + ':';
       if (n.url) {
         var a = document.createElement('a');
         a.className = 'text-link';
         a.href = n.url;
         if (n.url.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
         a.textContent = n.text;
-        p.appendChild(a);
-      } else p.appendChild(document.createTextNode(n.text));
-      el.note.appendChild(p);
+        text.appendChild(a);
+      } else text.textContent = n.text;
+      box.appendChild(label);
+      box.appendChild(text);
+      el.note.appendChild(box);
     });
     el.note.hidden = !w.notes.length;
-    el.more.hidden = !!w.status;
+    el.status.textContent = w.status;
+    el.status.hidden = !w.status;
     el.inquire.hidden = !!w.status;
-    el.details.hidden = !expanded;
-    el.toggle.setAttribute('aria-expanded', String(expanded));
-    var tap = NARROW.matches ? 'Koppints' : 'Kattints';
-    el.hint.textContent = tap + (expanded ? ' az adatlap bezárásához' : ' a teljes adatlapért');
     el.counter.textContent = two(idx + 1) + ' / ' + two(list.length || 1);
 
     // Extra views of the same work (A5).
@@ -205,9 +194,7 @@
   }
 
   function enterZoom() {
-    z.on = true; expanded = false;
-    el.details.hidden = true;
-    el.toggle.setAttribute('aria-expanded', 'false');
+    z.on = true;
     renderZoom();          // stage switches to full bleed first…
     measure();             // …then the cap is measured on the final box
     setZoom(1, 0, 0, true);
@@ -244,7 +231,7 @@
     if (w.openParts) w = partsOf(w.slug)[0]; // e.g. a stage set: its card opens the set's images
     if (w.partOf) { ctxList = partsOf(w.partOf); ctxScope = BY_SLUG[w.partOf].title; }
     else if (!ctxList || ctxList.indexOf(w) < 0) { ctxList = catSorted(w.cat); ctxScope = DATA.cats[w.cat]; }
-    list = ctxList; scope = ctxScope || ''; expanded = false;
+    list = ctxList; scope = ctxScope || '';
     viaHistory = fromHistory;
     idx = list.indexOf(w); view = 0;
     z.on = false; z.s = 1; z.x = 0; z.y = 0;
@@ -344,12 +331,6 @@
   el.next.addEventListener('click', function () { step(1); });
   el.inquire.addEventListener('click', function () {
     document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().partOf || current().slug, from: el.inquire } }));
-  });
-  // Design: the whole info block toggles the details sheet.
-  el.info.addEventListener('click', function (e) {
-    if (e.target.closest('a')) return; // the note link opens its page, the sheet stays open
-    expanded = !expanded;
-    render();
   });
   el.views.addEventListener('click', function (e) {
     var b = e.target.closest('[data-view]');
