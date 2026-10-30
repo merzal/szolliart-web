@@ -10,6 +10,7 @@
   var BY_SLUG = {};
   DATA.works.forEach(function (w) { BY_SLUG[w.slug] = w; });
   (DATA.parts || []).forEach(function (p) { BY_SLUG[p.slug] = p; });
+  (DATA.photos || []).forEach(function (p) { BY_SLUG[p.slug] = p; });
   // A composition's panels page among themselves, under the composition's title.
   function partsOf(slug) { return DATA.parts.filter(function (p) { return p.partOf === slug; }); }
 
@@ -105,6 +106,7 @@
     el.img.width = im[1];
     el.img.height = im[2];
     el.img.alt = w.title + (multi ? ' – ' + (view + 1) + '. nézet' : '');
+    root.classList.toggle('is-photo', !!w.photo); // a lone photo: image and close button only
 
     el.scope.textContent = scope;
     el.title.textContent = w.title;
@@ -246,7 +248,8 @@
   function open(w, ctxList, ctxScope, fromHistory) {
     clearTimeout(closeTimer);
     if (w.openParts) w = partsOf(w.slug)[0]; // e.g. a stage set: its card opens the set's images
-    if (w.partOf) { ctxList = partsOf(w.partOf); ctxScope = BY_SLUG[w.partOf].title; }
+    if (w.photo) { ctxList = [w]; ctxScope = w.scope; }
+    else if (w.partOf) { ctxList = partsOf(w.partOf); ctxScope = BY_SLUG[w.partOf].title; }
     else if (!ctxList || ctxList.indexOf(w) < 0) { ctxList = catSorted(w.cat); ctxScope = DATA.cats[w.cat]; }
     list = ctxList; scope = ctxScope || '';
     viaHistory = fromHistory;
@@ -287,7 +290,14 @@
       restoreScroll();
       // Release a frame later: a history-driven anchor scroll can land just after the unlock.
       requestAnimationFrame(function () { requestAnimationFrame(function () { holdScroll = false; }); });
-      if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+      if (opener && document.contains(opener)) {
+        // Focus goes back to the card for keyboard users, but without a ring around the artwork
+        // the visitor just looked at; the next Tab shows the ring as usual.
+        var back = opener;
+        back.classList.add('is-focus-restored');
+        back.addEventListener('blur', function () { back.classList.remove('is-focus-restored'); }, { once: true });
+        back.focus({ preventScroll: true });
+      }
     }, CLOSE_MS);
   }
 

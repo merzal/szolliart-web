@@ -43,6 +43,9 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && panel.classList.contains('is-open')) {
         setOpen(false);
+        // Back on the menu button, without a ring until the visitor moves on (see style.css).
+        toggle.classList.add('is-focus-restored');
+        toggle.addEventListener('blur', function () { toggle.classList.remove('is-focus-restored'); }, { once: true });
         toggle.focus();
       }
     });

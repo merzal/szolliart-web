@@ -143,7 +143,13 @@
     document.documentElement.classList.remove('inquiry-lock');
     hidden.forEach(function (n) { n.inert = false; });
     hidden = [];
-    if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+    if (opener && document.contains(opener)) {
+      // Focus goes back for keyboard users, without a ring until they move on (see style.css).
+      var back = opener;
+      back.classList.add('is-focus-restored');
+      back.addEventListener('blur', function () { back.classList.remove('is-focus-restored'); }, { once: true });
+      back.focus({ preventScroll: true });
+    }
   }
 
   /* ---------------------------------------------------------------- */

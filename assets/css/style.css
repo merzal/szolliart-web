@@ -129,6 +129,8 @@ button { font: inherit; color: inherit; }
 }
 /* Script/anchor focus targets (e.g. <main> via the logo or skip link) are not controls: no ring. */
 [tabindex="-1"]:focus { outline: none; }
+/* Focus handed back by a closed viewer, dialog or menu: no ring until the visitor moves on. */
+.is-focus-restored:focus-visible { outline: none; }
 
 /* Anchored sections stop 18px below the sticky header (74px + 1px border), as the design's scrollTo does. */
 [id] { scroll-margin-top: calc(var(--header-h) + 1px + 18px); }
@@ -535,14 +537,22 @@ button { font: inherit; color: inherit; }
 
 /* About */
 .about {
+  --about-gap: clamp(30px, 5vw, 64px);
+  container-type: inline-size;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
-  gap: clamp(30px, 5vw, 64px);
+  gap: var(--about-gap);
   align-items: start;
 }
 .about__profile { max-width: 340px; }
 @media (min-width: 780px) {
-  .about__profile { position: sticky; top: 110px; }
+  /* The sticky profile stops at the bottom of the section, where the 3:4 photo ends. Making the
+     profile as tall as that photo (column width, at most 420px) stops it with the two tops level. */
+  .about__profile {
+    position: sticky;
+    top: 110px;
+    min-height: calc(min(420px, (100cqw - var(--about-gap)) / 2) * 4 / 3);
+  }
 }
 .about__portrait {
   width: 100%;
@@ -571,6 +581,7 @@ button { font: inherit; color: inherit; }
   text-wrap: pretty;
 }
 .about__heading + p { margin-top: 14px; }
+.about__photo { display: block; width: 100%; max-width: 420px; height: auto; margin-top: 30px; border-radius: var(--r-lg); background: var(--c-surface-2); }
 
 .rule { height: 1px; margin: 38px 0; border: 0; background: var(--line-strong); }
 
@@ -758,6 +769,9 @@ html.viewer-lock { scroll-behavior: auto; }
   outline: none;
 }
 @media (max-width: 779.98px) { .viewer__stage { inset: 0; } }
+/* A lone photo (not an artwork): no caption, paging or rail, so the image gets the room. */
+.viewer.is-photo .viewer__bottom, .viewer.is-photo .viewer__rail { display: none; }
+@media (min-width: 780px) { .viewer.is-photo:not(.is-zoom) .viewer__stage { inset: 72px 96px; } }
 .viewer.is-zoom .viewer__stage { inset: 0; }
 .viewer__zoom {
   position: absolute;

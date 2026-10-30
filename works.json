@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30T20:34:35.516Z",
+  "generated": "2026-10-30T21:05:32.439Z",
   "categories": [
     {
       "id": "rajzok",
@@ -69,6 +69,11 @@
     "file": "assets/img/about/szollosi-gabor.jpg",
     "w": 507,
     "h": 507
+  },
+  "aboutPhoto": {
+    "file": "assets/img/about/sajat-kep.jpg",
+    "w": 840,
+    "h": 1120
   },
   "og": {
     "file": "assets/img/og/szolliart.jpg",
@@ -1847,6 +1852,20 @@
               "h": 670
             }
           ]
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "slug": "kiallitas-2023-bacsalmas",
+      "scope": "Kiállítás",
+      "title": "A bácsalmási Hunyadi János Gimnáziumban rendezett kiállítás meghívója, 2023",
+      "images": [
+        {
+          "file": "assets/img/photos/kiallitas-2023-bacsalmas.jpg",
+          "w": 1280,
+          "h": 720
         }
       ]
     }
