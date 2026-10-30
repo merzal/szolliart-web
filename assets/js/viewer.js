@@ -20,6 +20,7 @@
   var ICON = {
     close: '<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>',
     prev: '<svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>',
+    down: '<svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
     next: '<svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>',
     mail: '<svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>',
   };
@@ -52,6 +53,9 @@
       '<div class="viewer__info" data-info>' +
         '<p class="viewer__title" id="viewer-title" data-title></p>' +
         '<p class="viewer__line" data-line></p>' +
+        '<button class="viewer__more-toggle" type="button" data-more-toggle aria-expanded="false" aria-controls="viewer-more" hidden>' +
+          'További részletek' + ICON.down + '</button>' +
+        '<div class="viewer__more" id="viewer-more" data-more hidden></div>' +
         '<div class="viewer__notes" data-note></div>' +
         '<p class="viewer__status" data-status></p>' +
       '</div>' +
@@ -69,7 +73,7 @@
   var el = {
     stage: $('stage'), zoom: $('zoom'), img: $('img'), layer: $('layer'), zoomHint: $('zoom-hint'),
     scope: $('scope'), close: $('close'), rail: $('rail'),
-    title: $('title'), line: $('line'), status: $('status'),
+    title: $('title'), line: $('line'), moreToggle: $('more-toggle'), more: $('more'), status: $('status'),
     note: $('note'), views: $('views'), prev: $('prev'),
     counter: $('counter'), next: $('next'), inquire: $('inquire'),
   };
@@ -105,8 +109,21 @@
     el.scope.textContent = scope;
     el.title.textContent = w.title;
     el.title.classList.toggle('is-long', !!w.partOf && w.title.length > 40);
-    el.line.textContent = [w.size, w.medium].filter(Boolean).join(' · ');
+    el.line.textContent = (w.sizeLast ? [w.medium, w.size] : [w.size, w.medium]).filter(Boolean).join(' · ');
     el.line.hidden = !el.line.textContent;
+    // Optional longer text (e.g. a production's credits), folded until asked for.
+    el.moreToggle.hidden = !w.more;
+    el.moreToggle.setAttribute('aria-expanded', 'false');
+    el.more.hidden = true;
+    el.more.textContent = '';
+    if (w.more) {
+      [w.more.title].concat(w.more.lines).forEach(function (t, i) {
+        var p = document.createElement('p');
+        if (i === 0) p.className = 'viewer__more-title';
+        p.textContent = t;
+        el.more.appendChild(p);
+      });
+    }
     el.note.textContent = '';
     w.notes.forEach(function (n) {
       var box = document.createElement('div'), label = document.createElement('p'), text = document.createElement('p');
@@ -328,6 +345,11 @@
   /* ---------------------------------------------------------------- */
   el.close.addEventListener('click', close);
   el.prev.addEventListener('click', function () { step(-1); });
+  el.moreToggle.addEventListener('click', function () {
+    var open = el.more.hidden;
+    el.more.hidden = !open;
+    el.moreToggle.setAttribute('aria-expanded', String(open));
+  });
   el.next.addEventListener('click', function () { step(1); });
   el.inquire.addEventListener('click', function () {
     document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().partOf || current().slug, from: el.inquire } }));

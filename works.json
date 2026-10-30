@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30T19:27:47.777Z",
+  "generated": "2026-10-30T20:34:35.516Z",
   "categories": [
     {
       "id": "rajzok",
@@ -1691,12 +1691,24 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "(Fázisfotó, mely kb. 85%-os állapotot mutat.)\nVegyes technika. Egyedi épített és kész elemek, tárgyak, bútorok felhasználásával.",
+          "size": "kb. 30×8×12 m",
           "status": "",
           "notes": [],
           "slug": "valahol-europaban-diszlet",
           "title": "A Valahol Európában díszlete",
+          "sizeLast": true,
+          "more": {
+            "title": "Valahol Európában musical",
+            "lines": [
+              "Premier: 2024. augusztus 20., Mélykúti Művelődési, Sport- és Szabadidőközpont",
+              "Rendező: Somogyi Szilárd",
+              "Zeneszerző: Dés László",
+              "Dalszöveg: Nemes István",
+              "Szövegkönyv: Böhm György – Korcsmáros György – Horváth Péter, Radványi Géza és Balázs Béla azonos című filmje alapján.",
+              "A musical a Proscenium Szerzői Ügynökség Kft.-vel és Balázs Béla örökösével kötött megállapodás alapján került színpadra."
+            ]
+          },
           "images": [
             {
               "file": "assets/img/works/valahol-europaban-diszlet.jpg",
@@ -1708,12 +1720,17 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "papír, ceruza, ragasztószalag",
+          "size": "3×4 m",
           "status": "",
-          "notes": [],
+          "notes": [
+            {
+              "text": "Az előadás során a háttérben elhelyezett reflektorral megvilágítva. Az áttöréseken keresztül kirajzolódott a primer alakzat, ami megjelent másodlagos szinten az árnyékolóhálón is."
+            }
+          ],
           "slug": "valahol-europaban-stilizalt-europa",
           "title": "Díszletelem a Valahol Európában darabból. Stilizált Európa-térkép.",
+          "sizeLast": true,
           "images": [
             {
               "file": "assets/img/works/valahol-europaban-stilizalt-europa.jpg",
@@ -1725,12 +1742,13 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "fakubusok, fólia, karton, papír, textil, akril, műanyag láda",
+          "size": "3,25×7,5 m",
           "status": "",
           "notes": [],
           "slug": "valahol-europaban-pesti-utcareszlet",
           "title": "Részlet a Valahol Európában díszletéből. Pesti utcarészlet, háttérben magasházak.",
+          "sizeLast": true,
           "images": [
             {
               "file": "assets/img/works/valahol-europaban-pesti-utcareszlet.jpg",
@@ -1742,12 +1760,13 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "akril, tojástartó (kötegelővel műanyag ládára applikálva)",
+          "size": "kb. 1,5×5 m",
           "status": "",
           "notes": [],
           "slug": "valahol-europaban-pesti-utcareszlet-2",
           "title": "Részlet a Valahol Európában díszletéből. Pesti utcarészlet 5 ablakában megjelenő mozaik gépkarabély.",
+          "sizeLast": true,
           "images": [
             {
               "file": "assets/img/works/valahol-europaban-pesti-utcareszlet-2.jpg",
@@ -1759,8 +1778,8 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "cipők, akril, korom",
+          "size": "",
           "status": "",
           "notes": [],
           "slug": "valahol-europaban-lelogo-cipok",
@@ -1776,8 +1795,8 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "artézi kút, zománcos kád, pillérzsaluzó (beton)elem",
+          "size": "",
           "status": "",
           "notes": [],
           "slug": "valahol-europaban-gat",
@@ -1793,9 +1812,9 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
-          "status": "",
+          "medium": "bútor, gumiabroncs, fa, akril, textil stb.",
+          "size": "",
+          "status": "Magántulajdonban",
           "notes": [],
           "slug": "valahol-europaban-fotel",
           "title": "Díszletelem a Valahol Európában darabból. Simon Péter „fotelje.”",
@@ -1810,12 +1829,17 @@
         {
           "cat": "diszlet",
           "year": 2024,
-          "medium": "díszlettervezés",
-          "size": "színpadkép",
+          "medium": "karton henger, karton lap, fém kötőelemek, huzal, konzervdoboz",
+          "size": "kb. 3×3 m",
           "status": "",
-          "notes": [],
+          "notes": [
+            {
+              "text": "A fenntarthatóság jegyében a konstrukció főként újrahasznosított anyagokból készült."
+            }
+          ],
           "slug": "valahol-europaban-fa",
           "title": "Díszletelem a Valahol Európában darabból. „Üres tér néhány fával. …”",
+          "sizeLast": true,
           "images": [
             {
               "file": "assets/img/works/valahol-europaban-fa.jpg",
