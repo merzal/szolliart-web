@@ -1077,7 +1077,9 @@ html.viewer-lock { scroll-behavior: auto; }
 .inquiry__send:hover { background: var(--accent-wash); }
 /* Design: looks inactive (opacity .45) until name and e-mail are valid; it still explains what is missing when pressed. */
 .inquiry__send.is-idle { opacity: .45; }
-.inquiry__send:disabled { cursor: progress; }
+.inquiry__send:disabled { cursor: not-allowed; }
+.inquiry__send:disabled:hover { background: none; }
+.inquiry__send.is-sending { cursor: progress; }
 .inquiry__status { margin: -8px 0 0; font-size: 13px; line-height: 1.5; color: #F0A8A8; text-align: center; }
 .inquiry__status[hidden] { display: none; }
 .inquiry__note { margin: 0; font-size: 11.5px; line-height: 1.5; text-align: center; color: var(--c-text-3); }

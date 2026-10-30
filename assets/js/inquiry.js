@@ -61,7 +61,7 @@
         '</div>' +
         '<button class="inquiry__send" type="submit" data-send>Elküldöm</button>' +
         '<p class="inquiry__status" data-status role="alert" hidden></p>' +
-        '<p class="inquiry__note">A mű adatait automatikusan mellékeljük. Válasz e-mailben érkezik.<br><a href="adatvedelem.html">Adatkezelési tájékoztató</a></p>' +
+        '<p class="inquiry__note"><span data-attach>A mű adatait automatikusan mellékeljük. </span>Válasz e-mailben érkezik.<br><a href="adatvedelem.html">Adatkezelési tájékoztató</a></p>' +
       '</form>' +
       '<div class="inquiry__sent" data-sent hidden>' +
         '<span class="inquiry__check">' + ICON_CHECK + '</span>' +
@@ -89,8 +89,13 @@
     if (!EMAIL.test(f.email.value.trim())) p.push('email');
     return p;
   }
-  // Design: the send button looks inactive until name and e-mail are filled in.
-  function updateReady() { send.classList.toggle('is-idle', problems().length > 0); }
+  // Design: the send button looks inactive until name and e-mail are filled in (pressing it then
+  // explains what is missing). With an empty message there is nothing to send: it is disabled.
+  function updateReady() {
+    var empty = !f.message.value.trim();
+    send.disabled = sending || empty;
+    send.classList.toggle('is-idle', empty || problems().length > 0);
+  }
   function showErrors(p) {
     ['name', 'email'].forEach(function (k) {
       var bad = p.indexOf(k) >= 0;
@@ -109,7 +114,8 @@
 
     $('title').textContent = work ? '„' + work.title + '”' : 'Írj néhány sort';
     $('line').textContent = work ? work.size + ' · ' + work.year : 'Szöllősi Gábor · Mélykút';
-    // Name and e-mail are kept between openings (as in the design); the message starts fresh.
+    $('attach').hidden = !work; // only a work's inquiry carries its details
+    // Name and e-mail are kept between openings until a message is sent (cleared in done()); the message starts fresh.
     f.message.value = work
       ? 'Érdeklődöm a „' + work.title + '” című mű iránt. Kérlek, írd meg az árát és az elérhetőségét.'
       : 'Érdeklődöm a művek iránt. Kérlek, keress meg a részletekkel.';
@@ -119,7 +125,7 @@
     form.hidden = false;
     sent.hidden = true;
     sending = false;
-    send.disabled = false;
+    send.classList.remove('is-sending');
     send.textContent = 'Elküldöm';
     updateReady();
     openedAt = Date.now();
@@ -158,6 +164,9 @@
   function done() {
     form.hidden = true;
     sent.hidden = false;
+    // A sent inquiry is finished: the next one starts with an empty form.
+    f.name.value = '';
+    f.email.value = '';
     $('sent-title').focus();
   }
 
@@ -177,7 +186,7 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (sending) return;
+    if (sending || !f.message.value.trim()) return;
     var p = problems();
     showErrors(p);
     if (p.length) { f[p[0]].focus(); return; }
@@ -187,6 +196,7 @@
 
     sending = true;
     send.disabled = true;
+    send.classList.add('is-sending');
     send.textContent = 'Küldés…';
     status.hidden = true;
     sendInquiry({
@@ -197,8 +207,9 @@
       page: location.href,
     }).then(done, function () {
       sending = false;
-      send.disabled = false;
+      send.classList.remove('is-sending');
       send.textContent = 'Elküldöm';
+      updateReady();
       status.textContent = 'Nem sikerült elküldeni. Próbáld újra kicsit később, vagy írj nekem Facebookon.';
       status.hidden = false;
     });
