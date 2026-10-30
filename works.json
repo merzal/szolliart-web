@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T20:37:46.165Z",
+  "generated": "2026-10-30T19:27:47.777Z",
   "categories": [
     {
       "id": "rajzok",
@@ -84,7 +84,7 @@
       "medium": "ceruza, akvarellpapír, porpasztell",
       "size": "A4",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20260225.jpg",
@@ -101,8 +101,12 @@
       "medium": "ceruza, papír",
       "size": "210×297 mm",
       "status": "",
-      "note": "MME – „Eltűnő harcos siklónk – a kaszpi haragossikló” Országos rajzpályázat Felnőtt szekció: III. helyezett alkotás",
-      "noteUrl": "https://mme.hu/khvsz/eredmenyhirdetes-kaszpi-haragossiklo",
+      "notes": [
+        {
+          "text": "MME – „Eltűnő harcos siklónk – a kaszpi haragossikló” Országos rajzpályázat Felnőtt szekció: III. helyezett alkotás",
+          "url": "https://mme.hu/khvsz/eredmenyhirdetes-kaszpi-haragossiklo"
+        }
+      ],
       "images": [
         {
           "file": "assets/img/works/20240531-kaszpi.jpg",
@@ -119,7 +123,7 @@
       "medium": "szén, karton",
       "size": "A1",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20140428-194316-afrikai-no-portreja.jpg",
@@ -136,7 +140,7 @@
       "medium": "szén, papír",
       "size": "A2",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20140428-194543-csendelet.jpg",
@@ -153,7 +157,7 @@
       "medium": "szén, papír",
       "size": "A2",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20140428-194631-csendelet-uvegek-es-kocka.jpg",
@@ -170,7 +174,7 @@
       "medium": "szén, papír",
       "size": "A3",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20140428-194651-portre.jpg",
@@ -187,7 +191,7 @@
       "medium": "ceruza, papír",
       "size": "A3",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/csendelet-szodasuveggel-ceruza.jpg",
@@ -204,7 +208,7 @@
       "medium": "szén, papír",
       "size": "A3",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/csendelet-szodasuveggel-szen.jpg",
@@ -221,7 +225,7 @@
       "medium": "szén, papír",
       "size": "50×70 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/tanulmany-az-1-kg-hoz.jpg",
@@ -238,7 +242,7 @@
       "medium": "karton, pasztell",
       "size": "70×100 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/beregi-vendel-portreja.jpg",
@@ -255,7 +259,7 @@
       "medium": "szén, papír",
       "size": "A3",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20130428-194911-csendelet.jpg",
@@ -272,7 +276,7 @@
       "medium": "szén, papír",
       "size": "A2",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20140428-194733-portre-fotorol.jpg",
@@ -289,7 +293,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/juci-portre.jpg",
@@ -306,7 +310,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/torok-istvan-portre.jpg",
@@ -323,7 +327,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/szvetnik-joachim-portreja.jpg",
@@ -340,7 +344,7 @@
       "medium": "akril, jutavászon",
       "size": "70×70 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kiss-attila-portreja.jpg",
@@ -357,7 +361,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/frici-portreja.jpg",
@@ -374,7 +378,7 @@
       "medium": "akril, jutavászon",
       "size": "180×180 cm (2 db 90×180 cm)",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/onarckep-2-db.jpg",
@@ -391,7 +395,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/mama-portre.jpg",
@@ -408,7 +412,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/mint-mondrian.jpg",
@@ -425,7 +429,7 @@
       "medium": "vegyes technika (vászon, akril, papír ragasztás, tűfilc, szén, akvarell)",
       "size": "30×40 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/20260625-hatvan.jpg",
@@ -442,7 +446,7 @@
       "medium": "vegyes technika, vászon",
       "size": "150×350 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/no-17.jpg",
@@ -459,7 +463,7 @@
       "medium": "vegyes technika, vászon",
       "size": "150×250 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kollazs-11.jpg",
@@ -476,7 +480,7 @@
       "medium": "vegyes technika, vászon",
       "size": "150×250 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/frottazs-7.jpg",
@@ -493,7 +497,7 @@
       "medium": "",
       "size": "130,5×90,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kek-11.jpg",
@@ -510,7 +514,7 @@
       "medium": "",
       "size": "140×90,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/maszkolt.jpg",
@@ -527,7 +531,12 @@
       "medium": "",
       "size": "133×90 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [
+        {
+          "text": "XXXIV. OTDK Kaposvár Festészet II. szekció – I. helyezett alkotás",
+          "url": "https://otdk.hu/wp-content/uploads/2024/10/Muveszeti-es-Muveszettudomanyi-Szekcio-a-XXXIV.-OTDK-helyezett-es-dijazott-palyamunkai.pdf"
+        }
+      ],
       "images": [
         {
           "file": "assets/img/works/no-11.jpg",
@@ -544,7 +553,7 @@
       "medium": "",
       "size": "160×99,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/no-13.jpg",
@@ -561,7 +570,7 @@
       "medium": "",
       "size": "142×85,5 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kek13.jpg",
@@ -578,7 +587,7 @@
       "medium": "",
       "size": "145×85,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/no-9.jpg",
@@ -595,7 +604,7 @@
       "medium": "",
       "size": "150×99,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/no-7tobb.jpg",
@@ -612,7 +621,7 @@
       "medium": "",
       "size": "52,5×50 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-i.jpg",
@@ -629,7 +638,7 @@
       "medium": "",
       "size": "65,5×60 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-ii.jpg",
@@ -646,7 +655,7 @@
       "medium": "",
       "size": "75,5×85 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-iii.jpg",
@@ -663,7 +672,7 @@
       "medium": "",
       "size": "60×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-iv.jpg",
@@ -680,7 +689,7 @@
       "medium": "",
       "size": "60×88,5 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-v.jpg",
@@ -697,7 +706,7 @@
       "medium": "",
       "size": "60,5×45 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/labom-alatt-vi.jpg",
@@ -714,7 +723,7 @@
       "medium": "",
       "size": "58×88 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/fekete-sarga.jpg",
@@ -731,7 +740,7 @@
       "medium": "",
       "size": "58×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/voros-kek-erezet.jpg",
@@ -748,7 +757,7 @@
       "medium": "akril, vászon",
       "size": "36×148 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kek-bordo.jpg",
@@ -765,7 +774,7 @@
       "medium": "",
       "size": "79×78 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/itt-ott-i.jpg",
@@ -782,7 +791,7 @@
       "medium": "",
       "size": "85×67 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/itt-ott-ii.jpg",
@@ -799,7 +808,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/cim-nelkul-kavicsok.jpg",
@@ -816,7 +825,7 @@
       "medium": "akril, jutavászon",
       "size": "90×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/cim-nelkul-kavicsok-atirat.jpg",
@@ -833,7 +842,7 @@
       "medium": "vegyes technika (fa, akril, juta, textil)",
       "size": "200×200×20 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/osztott-terek-i.jpg",
@@ -850,7 +859,7 @@
       "medium": "vegyes technika (fa, akril, juta, textil)",
       "size": "200×200×12 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/lelogocitromhej.jpg",
@@ -867,7 +876,7 @@
       "medium": "vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”)",
       "size": "200×200×7 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/az-utolso-cigaretta.jpg",
@@ -884,7 +893,7 @@
       "medium": "vegyes technika (fa, akril, műanyag, vászon, juta, textil, fémháló)",
       "size": "200×200×5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/schengen.jpg",
@@ -901,7 +910,7 @@
       "medium": "vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”)",
       "size": "200×200×5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/34-het-az-anktarktisz-lecsapolasan-eluszo-stilizalt-kacsa.jpg",
@@ -918,7 +927,7 @@
       "medium": "vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”)",
       "size": "200×200×40 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/rakonczay.jpg",
@@ -935,7 +944,7 @@
       "medium": "vegyes technika (akril, leselejtezett fa kerítéstábla „zajvédőfal”, perforált lemez)",
       "size": "200×220×15 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/mive-lettel-pangea.jpg",
@@ -952,7 +961,7 @@
       "medium": "vegyes technika (fa, akril, textil)",
       "size": "200×200×3 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/mulatsag-utan-rendrakasra-felkeszulve.jpg",
@@ -969,7 +978,7 @@
       "medium": "vegyes technika (fa, akril, juta, textil, fém, injekciós fecskendő, drót, rajzszén)",
       "size": "200×200×5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/lilla-nst-a-szeretet-210-db-megnyilvanulasa.jpg",
@@ -986,27 +995,70 @@
       "medium": "vegyes technika (fa, akril, textil, leselejtezett PVC-padlólemez, fém, drót)",
       "size": "600×200×15 cm (3 db 200×200 cm)",
       "status": "",
-      "note": "",
+      "notes": [
+        {
+          "text": "Nézd meg a kompozíció különálló tábláit",
+          "url": "#mu/felosztott-terek-1-tabla"
+        }
+      ],
       "images": [
         {
           "file": "assets/img/works/felosztott-terek.jpg",
           "w": 670,
           "h": 225
+        }
+      ],
+      "parts": [
+        {
+          "cat": "kollazsok",
+          "year": 2025,
+          "medium": "vegyes technika (fa, akril, textil, leselejtezett PVC-padlólemez, fém, drót)",
+          "size": "200×200×15 cm",
+          "status": "",
+          "notes": [],
+          "slug": "felosztott-terek-1-tabla",
+          "title": "(fel)osztott terek / 1. tábla",
+          "images": [
+            {
+              "file": "assets/img/works/felosztott-terek-1-tabla.jpg",
+              "w": 670,
+              "h": 663
+            }
+          ]
         },
         {
-          "file": "assets/img/works/felosztott-terek-2.jpg",
-          "w": 670,
-          "h": 663
+          "cat": "kollazsok",
+          "year": 2025,
+          "medium": "vegyes technika (fa, akril, textil, leselejtezett PVC-padlólemez, fém, drót)",
+          "size": "200×200×15 cm",
+          "status": "",
+          "notes": [],
+          "slug": "felosztott-terek-2-tabla",
+          "title": "(fel)osztott terek / 2. tábla",
+          "images": [
+            {
+              "file": "assets/img/works/felosztott-terek-2-tabla.jpg",
+              "w": 670,
+              "h": 651
+            }
+          ]
         },
         {
-          "file": "assets/img/works/felosztott-terek-3.jpg",
-          "w": 670,
-          "h": 651
-        },
-        {
-          "file": "assets/img/works/felosztott-terek-4.jpg",
-          "w": 668,
-          "h": 670
+          "cat": "kollazsok",
+          "year": 2025,
+          "medium": "vegyes technika (fa, akril, textil, leselejtezett PVC-padlólemez, fém, drót)",
+          "size": "200×200×15 cm",
+          "status": "",
+          "notes": [],
+          "slug": "felosztott-terek-3-tabla",
+          "title": "(fel)osztott terek / 3. tábla",
+          "images": [
+            {
+              "file": "assets/img/works/felosztott-terek-3-tabla.jpg",
+              "w": 668,
+              "h": 670
+            }
+          ]
         }
       ]
     },
@@ -1018,7 +1070,7 @@
       "medium": "vegyes technika (akril, textil, fa)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/narantshej-terben.jpg",
@@ -1035,7 +1087,7 @@
       "medium": "vegyes technika (akril, textil, fa)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kilincs.jpg",
@@ -1052,7 +1104,7 @@
       "medium": "vegyes technika (akril, jutavászon, textil, fa, parketta)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/presser-kek-billentyu-az-lgt-emlekere.jpg",
@@ -1069,7 +1121,11 @@
       "medium": "vegyes technika (akril, vászon, textil, fa)",
       "size": "200×200 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [
+        {
+          "text": "Közintézményben megtekinthető: Mélykúti Művelődési, Sport- és Szabadidőközpont"
+        }
+      ],
       "images": [
         {
           "file": "assets/img/works/zold-ablak-sarga-szek-gaza.jpg",
@@ -1086,7 +1142,7 @@
       "medium": "vegyes technika (akril, vászon, textil, fa, parketta)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/fa-taj-az-eredendo.jpg",
@@ -1103,7 +1159,7 @@
       "medium": "vegyes technika (akril, vászon, textil, fa, csemperagasztó)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/karsai-mikor-az-ember-nyomhagyasa-megvaltozik.jpg",
@@ -1120,7 +1176,7 @@
       "medium": "vegyes technika (akril, textil, fa, fém tárgyak)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/cim-nelkuli-morfeusz-avagy-kek-vagy-piros-pirula-valassz.jpg",
@@ -1137,7 +1193,7 @@
       "medium": "vegyes technika (akril, porpasztell, vászon, fa, plüssfigurák)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/buvojohely-kegyelem.jpg",
@@ -1154,7 +1210,7 @@
       "medium": "vegyes technika (akril, jutavászon, fa, fém)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/szaghaz-csigahaz-avagy-a-folyoparton-barmi-megtortenhet.jpg",
@@ -1171,7 +1227,7 @@
       "medium": "vegyes technika (akril, vászon, textil, fa)",
       "size": "200×200 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/judas.jpg",
@@ -1188,7 +1244,7 @@
       "medium": "vegyes technika (fa, akril, textil)",
       "size": "24,5×44 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/egyensuly.jpg",
@@ -1205,7 +1261,7 @@
       "medium": "vegyes technika (fa, akril, textil)",
       "size": "58×90 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/erdo-hommage-a-giacometti.jpg",
@@ -1222,7 +1278,7 @@
       "medium": "vegyes technika (fa, akril, rétegelt lemez, textil, fémháló)",
       "size": "82×116 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/mindenki-szereti-a-tortat.jpg",
@@ -1239,7 +1295,7 @@
       "medium": "",
       "size": "130×90 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/pah-160730.jpg",
@@ -1256,7 +1312,7 @@
       "medium": "",
       "size": "150×70 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/osztas.jpg",
@@ -1273,7 +1329,7 @@
       "medium": "",
       "size": "50×70 cm",
       "status": "Magántulajdonban",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/szomszed-vedre.jpg",
@@ -1290,7 +1346,7 @@
       "medium": "",
       "size": "55×45 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/cim-nelkul-i.jpg",
@@ -1307,7 +1363,7 @@
       "medium": "",
       "size": "70×50 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/cim-nelkul-ii.jpg",
@@ -1324,7 +1380,7 @@
       "medium": "",
       "size": "51×39 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kotelek-lakatok.jpg",
@@ -1341,7 +1397,7 @@
       "medium": "",
       "size": "50×70 cm",
       "status": "Megsemmisült",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/fuzfa-i.jpg",
@@ -1358,7 +1414,7 @@
       "medium": "",
       "size": "50×70 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/fuzfa-ii.jpg",
@@ -1375,7 +1431,7 @@
       "medium": "vegyes technika, fa",
       "size": "36×45 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/negyedik-hommage-istvan-bencsik.jpg",
@@ -1392,7 +1448,7 @@
       "medium": "vegyes technika, fa",
       "size": "50×70 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/ta-i.jpg",
@@ -1409,7 +1465,7 @@
       "medium": "vegyes technika, fa",
       "size": "30×40 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/ta-ii.jpg",
@@ -1426,7 +1482,7 @@
       "medium": "vegyes technika, fa",
       "size": "50×50 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/ta-iii.jpg",
@@ -1443,7 +1499,7 @@
       "medium": "vegyes technika, fa",
       "size": "50×50 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/400-ft.jpg",
@@ -1460,7 +1516,7 @@
       "medium": "vegyes technika, fa",
       "size": "32×46,5 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/szifon.jpg",
@@ -1474,10 +1530,19 @@
       "title": "Másnap",
       "cat": "installacio",
       "year": 2016,
-      "medium": "tárgykollázs · társalkotó: Somorai Renáta",
+      "medium": "tárgykollázs",
       "size": "150×100 cm",
       "status": "",
-      "note": "",
+      "notes": [
+        {
+          "label": "Társalkotó",
+          "text": "Somorai Renáta"
+        },
+        {
+          "label": "Kiállítás",
+          "text": "Az egynapos szigorított hadműveleti szolgálat – Nádor Galéria Art&Med Kulturális Központ, Pécs (HU)"
+        }
+      ],
       "images": [
         {
           "file": "assets/img/works/masnap.jpg",
@@ -1494,7 +1559,7 @@
       "medium": "akril, vászon",
       "size": "50×60 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/all-a-levego.jpg",
@@ -1511,7 +1576,7 @@
       "medium": "akril, vászon",
       "size": "50×60 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/zrinyi-utca.jpg",
@@ -1528,7 +1593,7 @@
       "medium": "akril, vászon",
       "size": "35×50 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/park-reszlet.jpg",
@@ -1545,7 +1610,7 @@
       "medium": "akril, vászon",
       "size": "60×50 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/p-p-setalo.jpg",
@@ -1562,7 +1627,7 @@
       "medium": "akril, vászon",
       "size": "50×70 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/kiemeles-i.jpg",
@@ -1579,7 +1644,7 @@
       "medium": "",
       "size": "60×135 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/lement-e.jpg",
@@ -1596,7 +1661,7 @@
       "medium": "",
       "size": "100×100 cm",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/lement-e-ii.jpg",
@@ -1613,47 +1678,151 @@
       "medium": "díszlettervezés",
       "size": "színpadkép",
       "status": "",
-      "note": "",
+      "notes": [],
       "images": [
         {
           "file": "assets/img/works/valahol-europaban.jpg",
           "w": 1600,
           "h": 796
+        }
+      ],
+      "openParts": true,
+      "parts": [
+        {
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-diszlet",
+          "title": "A Valahol Európában díszlete",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-diszlet.jpg",
+              "w": 1600,
+              "h": 796
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-2.jpg",
-          "w": 503,
-          "h": 670
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-stilizalt-europa",
+          "title": "Díszletelem a Valahol Európában darabból. Stilizált Európa-térkép.",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-stilizalt-europa.jpg",
+              "w": 670,
+              "h": 411
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-3.jpg",
-          "w": 467,
-          "h": 662
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-pesti-utcareszlet",
+          "title": "Részlet a Valahol Európában díszletéből. Pesti utcarészlet, háttérben magasházak.",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-pesti-utcareszlet.jpg",
+              "w": 670,
+              "h": 503
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-4.jpg",
-          "w": 503,
-          "h": 670
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-pesti-utcareszlet-2",
+          "title": "Részlet a Valahol Európában díszletéből. Pesti utcarészlet 5 ablakában megjelenő mozaik gépkarabély.",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-pesti-utcareszlet-2.jpg",
+              "w": 670,
+              "h": 359
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-5.jpg",
-          "w": 670,
-          "h": 503
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-lelogo-cipok",
+          "title": "Díszletelem a Valahol Európában darabból. Lelógó cipők.",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-lelogo-cipok.jpg",
+              "w": 670,
+              "h": 503
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-6.jpg",
-          "w": 670,
-          "h": 503
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-gat",
+          "title": "Díszletelem a Valahol Európában darabból. „Gát…!”",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-gat.jpg",
+              "w": 503,
+              "h": 670
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-7.jpg",
-          "w": 670,
-          "h": 359
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-fotel",
+          "title": "Díszletelem a Valahol Európában darabból. Simon Péter „fotelje.”",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-fotel.jpg",
+              "w": 467,
+              "h": 662
+            }
+          ]
         },
         {
-          "file": "assets/img/works/valahol-europaban-8.jpg",
-          "w": 670,
-          "h": 411
+          "cat": "diszlet",
+          "year": 2024,
+          "medium": "díszlettervezés",
+          "size": "színpadkép",
+          "status": "",
+          "notes": [],
+          "slug": "valahol-europaban-fa",
+          "title": "Díszletelem a Valahol Európában darabból. „Üres tér néhány fával. …”",
+          "images": [
+            {
+              "file": "assets/img/works/valahol-europaban-fa.jpg",
+              "w": 503,
+              "h": 670
+            }
+          ]
         }
       ]
     }

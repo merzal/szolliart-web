@@ -9,6 +9,9 @@
   var DATA = JSON.parse(dataEl.textContent);
   var BY_SLUG = {};
   DATA.works.forEach(function (w) { BY_SLUG[w.slug] = w; });
+  (DATA.parts || []).forEach(function (p) { BY_SLUG[p.slug] = p; });
+  // A composition's panels page among themselves, under the composition's title.
+  function partsOf(slug) { return DATA.parts.filter(function (p) { return p.partOf === slug; }); }
 
   var NARROW = window.matchMedia('(max-width: 779.98px)');
   var CLOSE_MS = 300; // design: sheetDown .3s
@@ -55,7 +58,7 @@
         '<div class="viewer__details" id="viewer-details" data-details hidden>' +
           '<p class="viewer__medium" data-medium></p>' +
           '<p class="viewer__status" data-status></p>' +
-          '<p class="viewer__note" data-note></p>' +
+          '<div class="viewer__notes" data-note></div>' +
           '<p class="viewer__more" data-more>A műről szívesen küldök további fotót.</p>' +
         '</div>' +
         '<p class="viewer__hint" data-hint></p>' +
@@ -109,22 +112,28 @@
 
     el.scope.textContent = scope;
     el.title.textContent = w.title;
+    el.title.classList.toggle('is-long', !!w.partOf && w.title.length > 40);
     el.line.textContent = [w.size, shortMedium(w), w.year].filter(Boolean).join(' · ');
     el.medium.textContent = w.medium || 'technika nincs jelölve';
     el.status.textContent = w.status;
     el.status.hidden = !w.status;
-    el.note.textContent = w.note;
-    if (w.note && w.noteUrl) {
-      var a = document.createElement('a');
-      a.className = 'text-link';
-      a.href = w.noteUrl;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.textContent = w.note;
-      el.note.textContent = '';
-      el.note.appendChild(a);
-    }
-    el.note.hidden = !w.note;
+    // The sheet shows plain notes unlabelled; a specific label (e.g. "Kiállítás") is spelled out.
+    el.note.textContent = '';
+    w.notes.forEach(function (n) {
+      var p = document.createElement('p');
+      p.className = 'viewer__note';
+      if (n.label) p.textContent = n.label + ': ';
+      if (n.url) {
+        var a = document.createElement('a');
+        a.className = 'text-link';
+        a.href = n.url;
+        if (n.url.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+        a.textContent = n.text;
+        p.appendChild(a);
+      } else p.appendChild(document.createTextNode(n.text));
+      el.note.appendChild(p);
+    });
+    el.note.hidden = !w.notes.length;
     el.more.hidden = !!w.status;
     el.inquire.hidden = !!w.status;
     el.details.hidden = !expanded;
@@ -232,12 +241,15 @@
 
   function open(w, ctxList, ctxScope, fromHistory) {
     clearTimeout(closeTimer);
-    if (!ctxList || ctxList.indexOf(w) < 0) { ctxList = catSorted(w.cat); ctxScope = DATA.cats[w.cat]; }
+    if (w.openParts) w = partsOf(w.slug)[0]; // e.g. a stage set: its card opens the set's images
+    if (w.partOf) { ctxList = partsOf(w.partOf); ctxScope = BY_SLUG[w.partOf].title; }
+    else if (!ctxList || ctxList.indexOf(w) < 0) { ctxList = catSorted(w.cat); ctxScope = DATA.cats[w.cat]; }
     list = ctxList; scope = ctxScope || ''; expanded = false;
     viaHistory = fromHistory;
     idx = list.indexOf(w); view = 0;
     z.on = false; z.s = 1; z.x = 0; z.y = 0;
     render();
+    if (w.slug !== (location.hash.match(/^#mu\/(.+)$/) || [])[1]) history.replaceState(history.state, '', '#mu/' + w.slug);
     if (!isOpen) {
       opener = activator || document.activeElement;
       activator = null;
@@ -331,7 +343,7 @@
   el.prev.addEventListener('click', function () { step(-1); });
   el.next.addEventListener('click', function () { step(1); });
   el.inquire.addEventListener('click', function () {
-    document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().slug, from: el.inquire } }));
+    document.dispatchEvent(new CustomEvent('inquiry:open', { detail: { slug: current().partOf || current().slug, from: el.inquire } }));
   });
   // Design: the whole info block toggles the details sheet.
   el.info.addEventListener('click', function (e) {

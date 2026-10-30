@@ -902,6 +902,8 @@ html.viewer-lock { scroll-behavior: auto; }
   color: #fff;
   text-wrap: pretty;
 }
+/* Caption-length titles (stage-set elements) would bury the image at display size. */
+.viewer__title.is-long { max-width: 46ch; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.25; letter-spacing: -.01em; }
 .viewer__line { display: block; font-size: 12.5px; font-variant-numeric: tabular-nums; color: rgba(241, 233, 228, .72); }
 .viewer__details {
   margin-top: 14px;
@@ -915,7 +917,7 @@ html.viewer-lock { scroll-behavior: auto; }
 .viewer__status { margin-top: 9px !important; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--c-accent); }
 .viewer__note { margin-top: 9px !important; font-size: 12.5px; line-height: 1.6; font-style: italic; color: rgba(241, 233, 228, .7); }
 .viewer__more { margin-top: 9px !important; font-size: 12.5px; line-height: 1.6; color: rgba(241, 233, 228, .6); }
-.viewer__status[hidden], .viewer__note[hidden], .viewer__more[hidden] { display: none; }
+.viewer__status[hidden], .viewer__notes[hidden], .viewer__more[hidden] { display: none; }
 .viewer__hint { margin: 12px 0 0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--v-faint); }
 
 /* A5: several views of one work (not in the design). */
