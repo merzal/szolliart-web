@@ -734,6 +734,10 @@ button { font: inherit; color: inherit; }
 }
 .page p { margin: 20px 0 0; font-size: 15px; line-height: 1.72; color: var(--c-text-2); text-wrap: pretty; }
 .page .btn { margin-top: 30px; }
+.page h2 { margin: 40px 0 0; font-family: var(--font-display); font-size: 21px; font-weight: 500; letter-spacing: -.015em; color: var(--c-text); }
+.page p strong { font-weight: 500; color: var(--c-text); }
+.page p a { color: var(--c-text-2); border-bottom: 1px solid var(--line-link); }
+.page p a:hover { color: var(--c-text); }
 
 /* ------------------------------------------------------------------ */
 /* Viewer                                                             */

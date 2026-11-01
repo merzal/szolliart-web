@@ -1,6 +1,5 @@
 // Inquiry dialog: general or about one work (opened from the viewer).
-// Sending is simulated for now (decision C2); swap sendInquiry() for the real
-// delivery (PHP or a form service) once hosting is decided. The UI stays the same.
+// Delivery goes through Web3Forms, which e-mails each inquiry and stores nothing.
 (function () {
   'use strict';
 
@@ -10,15 +9,42 @@
 
   var MIN_FILL_MS = 3000;   // faster than this is almost certainly a bot
 
+  // Web3Forms access key. It is public by design: it only lets this form send to the address it was created for.
+  var WEB3FORMS_KEY = '098325ec-80d4-4bd2-a643-8deca23f7816';
+  var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+
   /**
    * Delivers one inquiry. Must resolve on success and reject on failure.
-   * TODO(C2b, later task): replace the simulation with the real delivery.
+   * Web3Forms lists every field in the e-mail and sets the visitor's address as reply-to.
    * @param {{name: string, email: string, message: string, work: object|null, page: string}} payload
    * @returns {Promise<void>}
    */
   function sendInquiry(payload) {
-    void payload;
-    return new Promise(function (resolve) { setTimeout(resolve, 600); });
+    var w = payload.work;
+    var body = {
+      access_key: WEB3FORMS_KEY,
+      subject: w ? 'Érdeklődés: „' + w.title + '”' : 'Érdeklődés a szolliart.hu oldalról',
+      from_name: 'szolliart.hu',
+      name: payload.name,
+      email: payload.email,
+      message: payload.message,
+    };
+    if (w) {
+      body['Mű'] = w.title;
+      body['Méret, év'] = w.size + ' · ' + w.year;
+      body['Link'] = w.url;
+    }
+    body['Oldal'] = payload.page;
+
+    return fetch(WEB3FORMS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(body),
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok || !data.success) throw new Error(data.message || 'HTTP ' + res.status);
+      });
+    });
   }
 
   var ICON_CHECK = '<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.4 2.4 2.3 4.6-5"/></svg>';
