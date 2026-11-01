@@ -230,15 +230,37 @@
   /* ---------------------------------------------------------------- */
   /* Paging                                                           */
   /* ---------------------------------------------------------------- */
-  function show(i, v) {
+  // `dir` (-1 / 1) comes from the arrows, keys and swipes: the new image then slides in from that side.
+  function show(i, v, dir) {
+    var prevSrc = el.img.getAttribute('src');
     idx = (i + list.length) % list.length;
     view = v || 0;
     z.s = 1; z.x = 0; z.y = 0;
     if (z.on) measure();   // before render, so the zoom hint uses the new image's cap
     render();
+    if (el.img.getAttribute('src') !== prevSrc) swapIn(dir || 0);
     history.replaceState(history.state, '', '#mu/' + current().slug);
   }
-  function step(d) { if (list.length) show(idx + d); }
+  function step(d) { if (list.length) show(idx + d, 0, d); }
+
+  // A quick fade (and a short slide when paging), started once the new image has loaded so it never animates
+  // the old one or an empty frame. Fast paging only plays the latest swap.
+  var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var swapToken = 0, swapAnim = null;
+  function swapIn(dir) {
+    if (REDUCED_MOTION.matches || !el.img.animate) return;
+    var token = ++swapToken, img = el.img;
+    function play() {
+      if (token !== swapToken) return;
+      if (swapAnim) swapAnim.cancel();
+      swapAnim = img.animate([
+        { opacity: 0, transform: 'translateX(' + dir * 14 + 'px)' },
+        { opacity: 1, transform: 'none' },
+      ], { duration: 170, easing: 'cubic-bezier(.2, .7, .3, 1)' });
+    }
+    if (img.complete) play();
+    else img.addEventListener('load', play, { once: true });
+  }
 
   /* ---------------------------------------------------------------- */
   /* Open / close                                                     */
