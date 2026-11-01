@@ -89,6 +89,7 @@
   --shadow-hero: 0 30px 70px rgba(0, 0, 0, .5);
 
   --ease-zoom: cubic-bezier(.22, .68, 0, 1);
+  --ease-menu: cubic-bezier(.32, .72, 0, 1);
   --art-filter: saturate(1.03) contrast(1.02) brightness(1.02);
 }
 
@@ -262,22 +263,51 @@ button { font: inherit; color: inherit; }
   justify-content: center;
   cursor: pointer;
 }
-.menu-toggle .icon-close { display: none; }
-.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
-.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+.menu-toggle { position: relative; }
+/* The two icons sit on top of each other and swap with a quarter turn. */
+.menu-toggle .icon { position: absolute; transition: opacity .2s ease, transform .32s var(--ease-menu); }
+.menu-toggle .icon-close { opacity: 0; transform: rotate(-90deg) scale(.6); }
+.menu-toggle[aria-expanded="true"] .icon-open { opacity: 0; transform: rotate(90deg) scale(.6); }
+.menu-toggle[aria-expanded="true"] .icon-close { opacity: 1; transform: none; }
 
+/* Opens by growing the row from 0fr to 1fr (no fixed height needed); hidden when closed so it is not focusable. */
 .mobile-nav {
   display: none;
-  border-top: 1px solid var(--line);
-  padding: 8px var(--gutter) 16px;
-  flex-direction: column;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows .34s var(--ease-menu), visibility 0s linear .34s;
 }
+.mobile-nav.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows .34s var(--ease-menu), visibility 0s;
+}
+.mobile-nav__inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--gutter);
+}
+/* Vertical padding and the top rule live in spacers so the closed row really reaches 0. */
+.mobile-nav__inner::before, .mobile-nav__inner::after { content: ''; flex: none; }
+.mobile-nav__inner::before { height: 8px; margin: 0 calc(-1 * var(--gutter)); border-top: 1px solid var(--line); }
+.mobile-nav__inner::after { height: 16px; }
 .mobile-nav a {
   padding: 14px 0;
   font-size: 15px;
   color: var(--c-text);
   border-bottom: 1px solid var(--line-faint);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease;
 }
+/* Links follow the panel down one after another; on close they all fade at once. */
+.mobile-nav.is-open a { opacity: 1; transform: none; transition: opacity .3s ease, transform .3s var(--ease-menu); }
+.mobile-nav.is-open a:nth-child(2) { transition-delay: .04s; }
+.mobile-nav.is-open a:nth-child(3) { transition-delay: .08s; }
+.mobile-nav.is-open a:nth-child(4) { transition-delay: .12s; }
+.mobile-nav.is-open a:nth-child(5) { transition-delay: .16s; }
 
 /* Narrow layout: same switch point as the design (780px). */
 @media (max-width: 779.98px) {
@@ -286,9 +316,10 @@ button { font: inherit; color: inherit; }
   .btn-cta--header { padding: 10px 13px; }
   .btn-cta--header .btn-cta__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .menu-toggle { display: inline-flex; }
-  .mobile-nav.is-open { display: flex; }
+  .mobile-nav { display: grid; }
   /* Without JavaScript the menu cannot be toggled, so it stays open. */
-  .no-js .mobile-nav { display: flex; }
+  .no-js .mobile-nav { grid-template-rows: 1fr; visibility: visible; }
+  .no-js .mobile-nav a { opacity: 1; transform: none; }
   .no-js .menu-toggle { display: none; }
 }
 
@@ -1145,6 +1176,7 @@ html.viewer-lock { scroll-behavior: auto; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: .01ms !important;
+    transition-delay: 0s !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
   }
