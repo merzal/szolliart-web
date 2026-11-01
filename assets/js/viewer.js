@@ -16,6 +16,7 @@
 
   var NARROW = window.matchMedia('(max-width: 779.98px)');
   var CLOSE_MS = 300; // design: sheetDown .3s
+  var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
   var SWIPE_PX = 50, TAP_PX = 8, DOUBLE_TAP_MS = 300, WHEEL_STEP = 1.12;
   // Swipe down to close: past this distance, or a quick flick, the sheet goes; otherwise it springs back.
   var DISMISS_PX = 110, DISMISS_FLICK = 0.6; // px/ms
@@ -215,18 +216,40 @@
   }
 
   function enterZoom() {
+    var from = fitRect();
     z.on = true;
     renderZoom();          // stage switches to full bleed first…
     measure();             // …then the cap is measured on the final box
     setZoom(1, 0, 0, true);
+    growFrom(from);
     el.layer.focus();
   }
 
   function exitZoom() {
+    var from = z.s === 1 ? fitRect() : null; // from a zoomed-in view the zoom transition already eases back
     z.on = false;
     z.s = 1; z.x = 0; z.y = 0;
     renderZoom();
+    growFrom(from);
     el.stage.focus();
+  }
+
+  // Where the contained image shows on screen, from the stage box and the image's ratio.
+  function fitRect() {
+    var im = image(), box = el.stage.getBoundingClientRect();
+    var fit = Math.min(box.width / im[1], box.height / im[2]);
+    return { cx: box.left + box.width / 2, cy: box.top + box.height / 2, w: im[1] * fit };
+  }
+  // Entering or leaving full screen resizes the stage; the image moves from its old place to the new one
+  // (FLIP) instead of jumping. On phones the stage is full screen already, so nothing moves.
+  function growFrom(from) {
+    if (!from || REDUCED_MOTION.matches || !el.img.animate) return;
+    var to = fitRect();
+    if (Math.abs(from.w - to.w) < 1 && Math.abs(from.cx - to.cx) < 1 && Math.abs(from.cy - to.cy) < 1) return;
+    el.img.animate([
+      { transform: 'translate(' + (from.cx - to.cx) + 'px,' + (from.cy - to.cy) + 'px) scale(' + from.w / to.w + ')' },
+      { transform: 'none' },
+    ], { duration: 240, easing: 'cubic-bezier(.2, .7, .3, 1)' });
   }
 
   /* ---------------------------------------------------------------- */
@@ -247,7 +270,6 @@
 
   // A quick fade (and a short slide when paging), started once the new image has loaded so it never animates
   // the old one or an empty frame. Fast paging only plays the latest swap.
-  var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
   var swapToken = 0, swapAnim = null;
   function swapIn(dir) {
     if (REDUCED_MOTION.matches || !el.img.animate) return;
@@ -414,7 +436,7 @@
   function trapFocus(e) {
     var f = Array.prototype.filter.call(
       root.querySelectorAll('button, [tabindex="0"]'),
-      function (n) { return n.offsetParent !== null && !n.closest('[hidden]'); });
+      function (n) { return n.offsetParent !== null && !n.closest('[hidden]') && getComputedStyle(n).visibility !== 'hidden'; });
     if (!f.length) return;
     var first = f[0], last = f[f.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }

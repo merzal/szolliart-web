@@ -819,10 +819,20 @@ html.viewer-lock { scroll-behavior: auto; }
 .viewer__zoom.is-panning { transition: none; }
 .viewer__img { width: 100%; height: 100%; object-fit: contain; }
 
-/* Zoom mode hides all chrome. */
+/* Zoom mode hides all chrome: it fades and drifts off its edge, then turns hidden so it cannot be focused. */
+.viewer__top, .viewer__rail, .viewer__bottom {
+  transition: opacity .2s ease, transform .24s cubic-bezier(.2, .7, .3, 1), visibility 0s linear 0s;
+}
 .viewer.is-zoom .viewer__top,
 .viewer.is-zoom .viewer__rail,
-.viewer.is-zoom .viewer__bottom { display: none; }
+.viewer.is-zoom .viewer__bottom {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .16s ease, transform .2s ease, visibility 0s linear .2s;
+}
+.viewer.is-zoom .viewer__top { transform: translateY(-10px); }
+.viewer.is-zoom .viewer__rail { transform: translateX(10px); }
+.viewer.is-zoom .viewer__bottom { transform: translateY(10px); }
 
 .viewer__zoom-layer { position: absolute; inset: 0; z-index: 20; touch-action: none; outline: none; }
 .viewer__zoom-layer[hidden] { display: none; }
