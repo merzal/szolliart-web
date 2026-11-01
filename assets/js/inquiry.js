@@ -106,6 +106,25 @@
   var hidden = [];
 
   /* ---------------------------------------------------------------- */
+  /* Draft                                                            */
+  /* ---------------------------------------------------------------- */
+  // The unsent form survives a visit to the privacy notice (or a reload) for the rest of the tab's session.
+  var DRAFT_KEY = 'szolliart:inquiry-draft';
+  function loadDraft() {
+    try { return JSON.parse(sessionStorage.getItem(DRAFT_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function saveDraft() {
+    try {
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+        name: f.name.value, email: f.email.value, message: f.message.value, slug: work ? work.slug : null,
+      }));
+    } catch (e) { /* storage blocked: the draft just does not survive */ }
+  }
+  function clearDraft() {
+    try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) { /* see saveDraft */ }
+  }
+
+  /* ---------------------------------------------------------------- */
   /* Validation                                                       */
   /* ---------------------------------------------------------------- */
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -145,6 +164,11 @@
     f.message.value = work
       ? 'Érdeklődöm a „' + work.title + '” című mű iránt. Kérlek, írd meg az árát és az elérhetőségét.'
       : 'Érdeklődöm a művek iránt. Kérlek, keress meg a részletekkel.';
+    // An unsent draft wins: name and e-mail always, the message only for the same work (or the general form).
+    var draft = loadDraft();
+    if (!f.name.value && draft.name) f.name.value = draft.name;
+    if (!f.email.value && draft.email) f.email.value = draft.email;
+    if (draft.message && draft.slug === (work ? work.slug : null)) f.message.value = draft.message;
     f.website.value = '';
     showErrors([]);
     status.hidden = true;
@@ -193,11 +217,13 @@
     // A sent inquiry is finished: the next one starts with an empty form.
     f.name.value = '';
     f.email.value = '';
+    clearDraft();
     $('sent-title').focus();
   }
 
   form.addEventListener('input', function (e) {
     updateReady();
+    if (e.target !== f.website) saveDraft();
     // Clear an error as soon as the field is fixed.
     if (e.target === f.name || e.target === f.email) {
       var p = problems();
