@@ -289,9 +289,46 @@
   /* ---------------------------------------------------------------- */
   /* Open / close                                                     */
   /* ---------------------------------------------------------------- */
+  /* ---------------------------------------------------------------- */
+  /* DEBUG (temporary, only with ?debug in the URL): event log overlay */
+  /* ---------------------------------------------------------------- */
+  var DEBUG = /[?&]debug\b/.test(location.search);
+  var dbg = function () {};
+  if (DEBUG) (function () {
+    var box = document.createElement('div'), lines = [], t0 = performance.now(), frames = 0, last = t0;
+    box.style.cssText = 'position:fixed;left:0;right:0;top:env(safe-area-inset-top);z-index:2000;background:rgba(255,235,0,.92);color:#000;' +
+      'font:10px/1.25 ui-monospace,monospace;padding:3px 5px;pointer-events:none;white-space:pre-wrap';
+    document.body.appendChild(box);
+    function paint() {
+      box.textContent = 'f' + frames + ' sY ' + Math.round(scrollY) + ' iH ' + innerHeight + ' vvT ' +
+        (window.visualViewport ? Math.round(visualViewport.offsetTop) : '-') + ' v ' + (root.hidden ? 'hid' : root.className.replace(/viewer ?/g, '')) +
+        ' lock ' + document.documentElement.classList.contains('viewer-lock') + ' hold ' + holdScroll + '\n' + lines.join('\n');
+    }
+    dbg = function (m) {
+      lines.push(Math.round(performance.now() - t0) + ' ' + m);
+      if (lines.length > 18) lines.shift();
+      paint();
+    };
+    (function tick(now) {
+      frames++;
+      if (now - last > 250) dbg('FRAME GAP ' + Math.round(now - last) + 'ms');
+      last = now;
+      paint();
+      requestAnimationFrame(tick);
+    })(t0);
+    var lastY = -1;
+    window.addEventListener('scroll', function () { var y = Math.round(scrollY); if (y !== lastY) { lastY = y; dbg('scroll ' + y); } });
+    window.addEventListener('popstate', function () { dbg('popstate ' + location.hash); });
+    window.addEventListener('hashchange', function () { dbg('hashchange ' + location.hash); });
+    window.addEventListener('resize', function () { dbg('resize iH ' + innerHeight); });
+    window.addEventListener('pageshow', function (e) { dbg('pageshow persisted ' + e.persisted); });
+    document.addEventListener('visibilitychange', function () { dbg('visibility ' + document.visibilityState); });
+  })();
+
   var background = function () { return document.querySelectorAll('body > a, body > header, body > main, body > footer'); };
 
   function open(w, ctxList, ctxScope, fromHistory) {
+    dbg('open ' + w.slug + ' fromHist ' + !!fromHistory + ' isOpen ' + isOpen + ' sY ' + Math.round(scrollY));
     clearTimeout(closeTimer);
     if (w.openParts) w = partsOf(w.slug)[0]; // e.g. a stage set: its card opens the set's images
     if (w.photo) { ctxList = [w]; ctxScope = w.scope; }
@@ -320,7 +357,7 @@
   }
 
   function restoreScroll() {
-    if (window.scrollY !== pageY) window.scrollTo({ top: pageY, behavior: 'instant' });
+    if (window.scrollY !== pageY) { dbg('restore ' + Math.round(scrollY) + '->' + pageY); window.scrollTo({ top: pageY, behavior: 'instant' }); }
   }
   window.addEventListener('scroll', function () { if (holdScroll) restoreScroll(); });
   // iOS scrolls the page by touch despite overflow: hidden, e.g. a swipe that lands on it while the sheet is
@@ -336,6 +373,7 @@
   function finishClose() {
     var motion = closeMotion;
     closeMotion = null;
+    dbg('finishClose ms ' + (motion ? motion.ms : CLOSE_MS) + ' sY ' + Math.round(scrollY) + ' pageY ' + pageY);
     root.style.animationDuration = motion ? motion.ms + 'ms' : '';
     root.style.animationTimingFunction = motion ? motion.easing : '';
     isOpen = false;
@@ -344,6 +382,7 @@
     root.classList.add('is-closing');
     background().forEach(function (n) { n.inert = false; });
     closeTimer = setTimeout(function () {
+      dbg('hide sY ' + Math.round(scrollY));
       root.hidden = true;
       root.style.transform = ''; // left by a swipe-down close
       root.style.animationDuration = '';
@@ -366,6 +405,7 @@
 
   // UI close: pop our history entry if we pushed one, otherwise just drop the hash.
   function close() {
+    dbg('close viaHistory ' + viaHistory + ' isOpen ' + isOpen);
     if (!isOpen) return;
     if (viaHistory) { history.back(); return; } // hashchange → finishClose
     history.replaceState(history.state, '', location.pathname + location.search);
@@ -471,6 +511,7 @@
     // The drag takes over once the finger clearly heads down rather than sideways.
     if (!drag.on && dy > TAP_PX && dy > Math.abs(dx)) {
       drag.on = true;
+      dbg('drag start ' + root.className.replace(/viewer ?/g, ''));
       try { el.stage.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
     }
     if (!drag.on) return;
@@ -482,6 +523,7 @@
   });
   function endDrag(cancelled) {
     var d = drag;
+    dbg('drag end dy ' + Math.round(d.dy) + ' v ' + (d.v || 0).toFixed(2) + (cancelled ? ' CANCEL' : ''));
     drag = null;
     tap = null;
     if (cancelled || (d.dy < DISMISS_PX && !(d.v > DISMISS_FLICK && d.dy > SWIPE_PX))) {
