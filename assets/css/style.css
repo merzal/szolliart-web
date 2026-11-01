@@ -795,7 +795,8 @@ html.viewer-lock { scroll-behavior: auto; }
 }
 .viewer[hidden] { display: none; }
 .viewer.is-open { animation: sheetUp .38s cubic-bezier(.32, .72, 0, 1) both; }
-.viewer.is-closing { animation: sheetDown .3s cubic-bezier(.32, .72, 0, 1) both; }
+/* Not the opening's ease-out: that front-loads the motion, so the sheet seemed to vanish rather than slide away. */
+.viewer.is-closing { animation: sheetDown .42s cubic-bezier(.4, 0, .2, 1) both; }
 
 .viewer__stage {
   position: absolute;

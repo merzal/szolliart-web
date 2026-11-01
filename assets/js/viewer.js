@@ -15,7 +15,7 @@
   function partsOf(slug) { return DATA.parts.filter(function (p) { return p.partOf === slug; }); }
 
   var NARROW = window.matchMedia('(max-width: 779.98px)');
-  var CLOSE_MS = 300; // design: sheetDown .3s
+  var CLOSE_MS = 420; // matches .viewer.is-closing in style.css
   var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
   var SWIPE_PX = 50, TAP_PX = 8, DOUBLE_TAP_MS = 300, WHEEL_STEP = 1.12;
   // Swipe down to close: past this distance, or a quick flick, the sheet goes; otherwise it springs back.
@@ -324,7 +324,13 @@
   }
   window.addEventListener('scroll', function () { if (holdScroll) restoreScroll(); });
 
+  // A swipe-down close sets its own duration and easing (see endDrag); every other close uses the CSS ones.
+  var closeMotion = null;
   function finishClose() {
+    var motion = closeMotion;
+    closeMotion = null;
+    root.style.animationDuration = motion ? motion.ms + 'ms' : '';
+    root.style.animationTimingFunction = motion ? motion.easing : '';
     isOpen = false;
     restoreScroll();
     root.classList.remove('is-open');
@@ -333,6 +339,8 @@
     closeTimer = setTimeout(function () {
       root.hidden = true;
       root.style.transform = ''; // left by a swipe-down close
+      root.style.animationDuration = '';
+      root.style.animationTimingFunction = '';
       root.classList.remove('is-closing');
       document.documentElement.classList.remove('viewer-lock');
       restoreScroll();
@@ -346,7 +354,7 @@
         back.addEventListener('blur', function () { back.classList.remove('is-focus-restored'); }, { once: true });
         back.focus({ preventScroll: true });
       }
-    }, CLOSE_MS);
+    }, motion ? motion.ms : CLOSE_MS);
   }
 
   // UI close: pop our history entry if we pushed one, otherwise just drop the hash.
@@ -476,6 +484,10 @@
       root.style.transform = '';
       return;
     }
+    // The sheet carries on at the finger's speed: this curve starts at twice its average speed, so the
+    // duration is twice the time the rest of the way takes at release speed.
+    var rest = root.getBoundingClientRect().height, v = Math.max(d.v || 0, 1);
+    closeMotion = { ms: Math.round(Math.max(220, Math.min(480, 2 * rest / v))), easing: 'cubic-bezier(.3, .6, .5, 1)' };
     close();
   }
   el.stage.addEventListener('pointercancel', function () { if (drag && drag.on) endDrag(true); });
