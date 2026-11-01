@@ -323,6 +323,13 @@
     if (window.scrollY !== pageY) window.scrollTo({ top: pageY, behavior: 'instant' });
   }
   window.addEventListener('scroll', function () { if (holdScroll) restoreScroll(); });
+  // iOS scrolls the page by touch despite overflow: hidden, e.g. a swipe that lands on it while the sheet is
+  // still sliding in. The scroll hold then fights Safari's own scrolling, and the page could stay unpainted
+  // after closing. So while the viewer is on screen, only its own scrolling text may move.
+  document.addEventListener('touchmove', function (e) {
+    if (root.hidden || (e.target.closest && e.target.closest('.viewer__more'))) return;
+    e.preventDefault();
+  }, { passive: false });
 
   // A swipe-down close sets its own duration and easing (see endDrag); every other close uses the CSS ones.
   var closeMotion = null;

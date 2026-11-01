@@ -982,7 +982,7 @@ html.viewer-lock { scroll-behavior: auto; }
 .viewer__more-toggle .icon { transition: transform .2s; }
 .viewer__more-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
 /* Long credits scroll inside the caption instead of pushing the title off screen. */
-.viewer__more { max-height: 38vh; overflow-y: auto; margin-top: 10px; font-size: 13px; line-height: 1.55; color: rgba(241, 233, 228, .78); text-wrap: pretty; }
+.viewer__more { max-height: 38vh; overflow-y: auto; overscroll-behavior: contain; margin-top: 10px; font-size: 13px; line-height: 1.55; color: rgba(241, 233, 228, .78); text-wrap: pretty; }
 .viewer__more-title { font-style: italic; font-weight: 600; color: rgba(241, 233, 228, .92); }
 .viewer__line[hidden], .viewer__status[hidden], .viewer__notes[hidden],
 .viewer__more-toggle[hidden], .viewer__more[hidden] { display: none; }
