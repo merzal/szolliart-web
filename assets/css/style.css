@@ -802,7 +802,7 @@ html.viewer-lock { scroll-behavior: auto; }
   inset: 72px 96px 200px;
   overflow: hidden;
   cursor: zoom-in;
-  touch-action: pan-y;
+  touch-action: none; /* all touch gestures are ours: swipe to page, drag down to close */
   outline: none;
 }
 @media (max-width: 779.98px) { .viewer__stage { inset: 0; } }

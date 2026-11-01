@@ -17,6 +17,8 @@
   var NARROW = window.matchMedia('(max-width: 779.98px)');
   var CLOSE_MS = 300; // design: sheetDown .3s
   var SWIPE_PX = 50, TAP_PX = 8, DOUBLE_TAP_MS = 300, WHEEL_STEP = 1.12;
+  // Swipe down to close: past this distance, or a quick flick, the sheet goes; otherwise it springs back.
+  var DISMISS_PX = 110, DISMISS_FLICK = 0.6; // px/ms
 
   var ICON = {
     close: '<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>',
@@ -286,6 +288,7 @@
       holdScroll = true;
       isOpen = true;
       root.hidden = false;
+      root.style.transform = '';
       root.classList.remove('is-closing');
       root.classList.add('is-open');
       document.documentElement.classList.add('viewer-lock');
@@ -307,6 +310,7 @@
     background().forEach(function (n) { n.inert = false; });
     closeTimer = setTimeout(function () {
       root.hidden = true;
+      root.style.transform = ''; // left by a swipe-down close
       root.classList.remove('is-closing');
       document.documentElement.classList.remove('viewer-lock');
       restoreScroll();
@@ -417,11 +421,45 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 
-  /* Stage (normal mode): tap → zoom mode, horizontal swipe → page. */
-  var tap = null;
+  /* Stage (normal mode): tap → zoom mode, horizontal swipe → page, touch drag down → close. */
+  var tap = null, drag = null;
   el.stage.tabIndex = -1;
-  el.stage.addEventListener('pointerdown', function (e) { tap = { x: e.clientX, y: e.clientY }; });
+  el.stage.addEventListener('pointerdown', function (e) {
+    tap = { x: e.clientX, y: e.clientY };
+    drag = e.pointerType === 'touch' && !z.on ? { y: e.clientY, t: e.timeStamp, dy: 0, on: false } : null;
+  });
+  el.stage.addEventListener('pointermove', function (e) {
+    if (!drag || !tap) return;
+    var dx = e.clientX - tap.x, dy = e.clientY - tap.y;
+    // The drag takes over once the finger clearly heads down rather than sideways.
+    if (!drag.on && dy > TAP_PX && dy > Math.abs(dx)) {
+      drag.on = true;
+      try { el.stage.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
+    }
+    if (!drag.on) return;
+    // Keep the speed of the last stretch for the flick test.
+    var dt = e.timeStamp - drag.t;
+    if (dt > 0) drag.v = (dy - drag.dy) / dt;
+    drag.dy = Math.max(0, dy); drag.t = e.timeStamp;
+    root.style.transform = 'translateY(' + drag.dy + 'px)';
+  });
+  function endDrag(cancelled) {
+    var d = drag;
+    drag = null;
+    tap = null;
+    if (cancelled || (d.dy < DISMISS_PX && !(d.v > DISMISS_FLICK && d.dy > SWIPE_PX))) {
+      // Spring back. The sheet's own close animation (translate) runs on top of this transform otherwise.
+      if (root.animate) root.animate([{ transform: 'translateY(' + d.dy + 'px)' }, { transform: 'none' }],
+        { duration: 240, easing: 'cubic-bezier(.32, .72, 0, 1)' });
+      root.style.transform = '';
+      return;
+    }
+    close();
+  }
+  el.stage.addEventListener('pointercancel', function () { if (drag && drag.on) endDrag(true); });
   el.stage.addEventListener('pointerup', function (e) {
+    if (drag && drag.on) { endDrag(false); return; }
+    drag = null;
     if (!tap || z.on) return;
     var dx = e.clientX - tap.x, dy = e.clientY - tap.y;
     tap = null;
