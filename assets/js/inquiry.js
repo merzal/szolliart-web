@@ -47,6 +47,7 @@
     });
   }
 
+  var ICON_CLOSE = '<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
   var ICON_CHECK = '<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.4 2.4 2.3 4.6-5"/></svg>';
 
   /* ---------------------------------------------------------------- */
@@ -59,8 +60,9 @@
   root.innerHTML =
     '<div class="inquiry__backdrop" data-dismiss></div>' +
     '<div class="inquiry__panel" role="dialog" aria-modal="true" aria-labelledby="inquiry-title">' +
+      '<button class="inquiry__close" type="button" data-dismiss aria-label="Bezárás" title="Bezárás (Esc)">' + ICON_CLOSE + '</button>' +
       '<form class="inquiry__form" data-form novalidate>' +
-        '<div>' +
+        '<div class="inquiry__head">' +
           '<p class="kicker">Érdeklődés</p>' +
           '<h2 class="inquiry__title" id="inquiry-title" data-title></h2>' +
           '<p class="inquiry__line" data-line></p>' +

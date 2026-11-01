@@ -1035,6 +1035,24 @@ html.viewer-lock { scroll-behavior: auto; }
   box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
   animation: riseIn .3s cubic-bezier(.32, .72, 0, 1) both;
 }
+.inquiry__close {
+  position: absolute;
+  top: clamp(14px, 3vw, 20px);
+  right: clamp(14px, 3vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(241, 233, 228, .28);
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--c-text);
+  cursor: pointer;
+}
+.inquiry__close:hover { border-color: rgba(241, 233, 228, .55); }
+.inquiry__head { padding-right: 48px; } /* keeps a long work title clear of the close button */
 .inquiry__form { display: flex; flex-direction: column; gap: 22px; }
 .inquiry__form[hidden], .inquiry__sent[hidden] { display: none; }
 .inquiry__title {
@@ -1060,6 +1078,10 @@ html.viewer-lock { scroll-behavior: auto; }
   font-family: var(--font-text);
   font-size: 14px;
   outline: none;
+}
+/* iOS zooms into any field under 16px on focus and stays zoomed, so touch screens get 16px. */
+@media (pointer: coarse) {
+  .inquiry__field input, .inquiry__field textarea { font-size: 16px; }
 }
 .inquiry__field textarea { line-height: 1.6; resize: none; }
 .inquiry__field input::placeholder { color: var(--c-text-3); }
