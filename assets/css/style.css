@@ -790,6 +790,8 @@ html.viewer-lock { scroll-behavior: auto; }
   overflow: hidden;
   background: var(--c-viewer);
   color: var(--c-text);
+  /* Quick taps on the arrows read as a double-tap to Safari, which zooms the page. The image zoom is our own (zoom layer). */
+  touch-action: manipulation;
 }
 .viewer[hidden] { display: none; }
 .viewer.is-open { animation: sheetUp .38s cubic-bezier(.32, .72, 0, 1) both; }
